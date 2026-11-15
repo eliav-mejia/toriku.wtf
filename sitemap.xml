@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- BEACON · toriku.wtf · actualizar lastmod en cada versión publicada. /gracias/ y 404 quedan fuera (noindex / robots). -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://toriku.wtf/</loc><lastmod>2026-11-15</lastmod><changefreq>monthly</changefreq><priority>1.0</priority>
+    <image:image><image:loc>https://toriku.wtf/assets/img/portafolio_stock/heroe.jpg</image:loc></image:image>
+    <image:image><image:loc>https://toriku.wtf/assets/img/portafolio_stock/marea-baja.jpg</image:loc></image:image><!-- Corto «Marea baja» -->
+    <image:image><image:loc>https://toriku.wtf/assets/img/portafolio_stock/mezcal.jpg</image:loc></image:image><!-- Mezcal artesanal · bodegón -->
+    <image:image><image:loc>https://toriku.wtf/assets/img/portafolio_stock/verano.jpg</image:loc></image:image><!-- Campaña de verano · exterior -->
+    <image:image><image:loc>https://toriku.wtf/assets/img/portafolio_stock/lookbook-otono.jpg</image:loc></image:image><!-- Lookbook otoño -->
+    <image:image><image:loc>https://toriku.wtf/assets/img/portafolio_stock/directivo.jpg</image:loc></image:image><!-- Equipo directivo · fintech -->
+    <image:image><image:loc>https://toriku.wtf/assets/img/portafolio_stock/calzado.jpg</image:loc></image:image><!-- Calzado · fondo blanco -->
+    <image:image><image:loc>https://toriku.wtf/assets/img/portafolio_stock/neon.jpg</image:loc></image:image><!-- Videoclip «Neón» -->
+    <image:image><image:loc>https://toriku.wtf/assets/img/portafolio_stock/cafe.jpg</image:loc></image:image><!-- Café de especialidad -->
+    <image:image><image:loc>https://toriku.wtf/assets/img/portafolio_stock/ciclorama.jpg</image:loc></image:image><!-- Ciclorama · prueba de luz -->
+    <image:image><image:loc>https://toriku.wtf/assets/img/portafolio_stock/concreto.jpg</image:loc></image:image><!-- Editorial «Concreto» -->
+    <image:image><image:loc>https://toriku.wtf/assets/img/portafolio_stock/cosmetica.jpg</image:loc></image:image><!-- Cosmética · líquidos -->
+    <image:image><image:loc>https://toriku.wtf/assets/img/portafolio_stock/chef.jpg</image:loc></image:image><!-- Chef residente · perfil -->
+    <image:image><image:loc>https://toriku.wtf/assets/img/portafolio_stock/audio.jpg</image:loc></image:image><!-- Audio · color sólido -->
+  </url>
+  <url><loc>https://toriku.wtf/cotizar/</loc><lastmod>2026-11-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://toriku.wtf/legal/aviso-de-privacidad.html</loc><lastmod>2026-11-15</lastmod><changefreq>yearly</changefreq><priority>0.2</priority></url>
+  <url><loc>https://toriku.wtf/legal/terminos.html</loc><lastmod>2026-11-15</lastmod><changefreq>yearly</changefreq><priority>0.2</priority></url>
+</urlset>

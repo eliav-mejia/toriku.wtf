@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Toriku">
+  <!-- Diafragma de seis hojas: marca de Toriku (PRISM). Trazo en papel para fondo oscuro. -->
+  <g fill="none" stroke="#f2efe9" stroke-width="3.2" stroke-linejoin="round">
+    <circle cx="32" cy="32" r="28"/>
+    <path d="M32 4 L44 26 M56.2 18 L40 37 M56.2 46 L32 46 M32 60 L20 38 M7.8 46 L24 27 M7.8 18 L32 18"/>
+  </g>
+  <circle cx="32" cy="32" r="5" fill="#e8452c"/>
+</svg>

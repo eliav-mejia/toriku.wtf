@@ -1,0 +1,12 @@
+# KERNEL · cabeceras de seguridad (Cloudflare Pages / Netlify). GitHub Pages las ignora: ver SECURITY.md.
+# Sin 'unsafe-inline': no hay <script> ni style="" en línea (el JSON-LD es datos y la CSP no lo bloquea).
+# Si se activa MEDICION_ID en analitica.js, agregar googletagmanager.com / google-analytics.com a script-src y connect-src.
+/*
+  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; form-action 'self' mailto:; frame-ancestors 'none'; base-uri 'self'
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+/assets/*
+  Cache-Control: public, max-age=604800
+/data/*
+  Cache-Control: public, max-age=300

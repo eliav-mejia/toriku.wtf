@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cotizar · toriku.wtf</title>
+  <meta name="description" content="Cotiza tu proyecto de foto o video en Toriku y aparta tu fecha de foro en Ciudad de México.">
+  <link rel="canonical" href="https://toriku.wtf/cotizar/">
+  <meta name="theme-color" content="#0d0c0b">
+  <link rel="icon" href="../assets/img/favicon.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap">
+  <link rel="stylesheet" href="../assets/css/toriku.css">
+</head>
+<body>
+<header class="cabecera">
+  <div class="envoltura">
+    <a class="logo" href="../" aria-label="Toriku, inicio"><img src="../assets/img/marca.png" alt="" width="49" height="40">TORIKU</a>
+    <nav class="nav" aria-label="Principal"><a href="../#servicios">Servicios</a><a href="../#foro">Foro</a><a href="../#trabajo">Trabajo</a></nav>
+    <button class="menu" type="button" aria-expanded="false" aria-label="Abrir menú">MENÚ</button>
+  </div>
+</header>
+
+<main class="pagina">
+  <div class="envoltura">
+    <span class="mono rojo">Cotizador</span>
+    <h1>Cotiza y aparta tu fecha.</h1>
+    <p class="intro">Elige el servicio, la fecha y los extras. Ves el estimado al momento; la fecha queda apartada con un anticipo fijo por servicio. Te confirmamos por correo en menos de 24 horas hábiles.</p>
+
+    <form class="cotizador" id="cotizador" novalidate>
+      <div>
+        <div class="campo"><label for="servicio">Servicio</label><select id="servicio" name="servicio" required></select></div>
+        <div class="dos">
+          <div class="campo"><label for="fecha">Fecha de set</label><input id="fecha" name="fecha" type="date" required><div class="ocupada" id="ocupada" aria-live="polite"></div></div>
+          <div class="campo"><label for="cantidad">Cantidad <span id="unidad"></span></label><input id="cantidad" name="cantidad" type="number" min="1" max="30" value="1" required></div>
+        </div>
+        <fieldset class="campo"><legend>Extras</legend><div class="extras" id="extras"></div></fieldset>
+        <div class="dos">
+          <div class="campo"><label for="nombre">Nombre</label><input id="nombre" name="nombre" autocomplete="name" required></div>
+          <div class="campo"><label for="correo">Correo</label><input id="correo" name="correo" type="email" autocomplete="email" required></div>
+        </div>
+        <div class="campo"><label for="empresa">Empresa o agencia (opcional)</label><input id="empresa" name="empresa" autocomplete="organization"></div>
+        <div class="campo"><label for="notas">Cuéntanos del proyecto</label><textarea id="notas" name="notas" placeholder="Formato, referencias, número de tomas o piezas…"></textarea></div>
+        <label class="acepto" for="acepto">
+          <input type="checkbox" id="acepto" required><span>Acepto el <a href="../legal/aviso-de-privacidad.html" target="_blank" rel="noopener">aviso de privacidad</a> y los <a href="../legal/terminos.html" target="_blank" rel="noopener">términos de reserva</a>.</span>
+        </label>
+      </div>
+
+      <aside class="resumen" aria-live="polite">
+        <h2>Estimado</h2>
+        <dl id="resumen"></dl>
+        <button class="boton" type="submit" id="enviar">Apartar fecha</button>
+        <p class="nota" id="nota"></p>
+      </aside>
+    </form>
+  </div>
+</main>
+
+<footer class="pie">
+  <div class="envoltura">
+    <div class="legal mono"><span>© 2026 Toriku · Ciudad de México</span><span><a href="../legal/aviso-de-privacidad.html">Aviso de privacidad</a> · <a href="../legal/terminos.html">Términos</a></span></div>
+  </div>
+</footer>
+
+<script src="../assets/js/analitica.js"></script>
+<script src="../data/catalogo.js"></script>
+<script src="../data/portafolio.js"></script>
+<script src="cotizar.js"></script>
+</body>
+</html>
