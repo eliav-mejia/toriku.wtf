@@ -93,7 +93,7 @@ a { color: inherit; }
 .servicio .desde a { color: var(--rojo); text-decoration: none; }
 
 /* ── foro */
-.foro { display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(32px, 6vw, 80px); align-items: center; }
+.foro, .doble { display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(32px, 6vw, 80px); align-items: center; }
 .plano { border: 1px solid var(--linea-2); background: var(--negro-2); padding: 20px; }
 .plano svg { width: 100%; height: auto; }
 .specs { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--linea); }
@@ -175,7 +175,7 @@ fieldset.campo { border: 0; margin: 0 0 22px; padding: 0; }
 
 @media (max-width: 960px) {
   .servicios { grid-template-columns: repeat(2, 1fr); }
-  .foro, .cotizador, .encabezado { grid-template-columns: 1fr; }
+  .foro, .doble, .cotizador, .encabezado { grid-template-columns: 1fr; }
   .pasos { grid-template-columns: repeat(2, 1fr); row-gap: 36px; }
   .pieza, .pieza.ancha { grid-column: span 6; }
   .resumen { position: static; }
@@ -195,3 +195,4 @@ fieldset.campo { border: 0; margin: 0 0 22px; padding: 0; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
 }
+.doble .acciones { margin-top: 24px; }

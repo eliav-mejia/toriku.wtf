@@ -14,7 +14,7 @@ window.TORIKU_CATALOGO = {
 
   // Disciplinas que se ven en la portada. «desde» sale del SKU base.
   disciplinas: [
-    { id: 'cine',       nombre: 'Cine y video',          base: 'TK-CINE-DIA', texto: 'Rodajes de ficción, videoclip y branded content. Equipo de cámara, eléctrico y foro en un solo lugar.' },
+    { id: 'cine',       nombre: 'Cine y video',          base: 'TK-CINE-DIA', texto: 'Rodajes de ficción, videoclip y branded content. Cortometraje, videoclip y branded content con crew de la red, en tu locación o a distancia.' },
     { id: 'publicidad', nombre: 'Publicidad',            base: 'TK-PUB-DIA',  texto: 'Campañas para impreso, exterior y redes: preproducción, casting, set y postproducción de color.' },
     { id: 'producto',   nombre: 'Foto de producto',      base: 'TK-PROD-10',  texto: 'Fondo blanco para e-commerce, bodegón editorial y líquidos. Entrega lista para tienda en línea.' },
     { id: 'moda',       nombre: 'Moda y editorial',      base: 'TK-MODA-DIA', texto: 'Lookbooks, catálogos y editoriales con ciclorama, estilismo y maquillaje coordinados.' },

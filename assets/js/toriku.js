@@ -28,10 +28,11 @@
 
   // servicios desde el catálogo
   const sv = $('#lista-servicios');
-  if (sv && CAT) sv.innerHTML = CAT.disciplinas.map((d, i) => {
+  const DIS = CAT ? CAT.disciplinas.filter(d => d.id !== 'foro') : [];  // sin foro: servicios en sitio y a distancia
+  if (sv && CAT) sv.innerHTML = DIS.map((d, i) => {
     const base = CAT.servicios.find(s => s.sku === d.base);
     return `<article class="servicio" id="s-${d.id}">
-      <span class="n mono">${String(i + 1).padStart(2, '0')} / ${String(CAT.disciplinas.length).padStart(2, '0')}</span>
+      <span class="n mono">${String(i + 1).padStart(2, '0')} / ${String(DIS.length).padStart(2, '0')}</span>
       <h3>${esc(d.nombre)}</h3><p>${esc(d.texto)}</p>
       <div class="desde"><span class="mono">Desde <b>${base ? mxn(base.precio) : '—'}</b></span><a class="mono" href="cotizar/?tipo=${d.id}">Cotizar →</a></div>
     </article>`;
@@ -40,10 +41,11 @@
   // portafolio con filtros
   const gal = $('#galeria'), fil = $('#filtros');
   if (gal && PF && CU) {
-    gal.innerHTML = PF.proyectos.map(p => `<figure class="pieza${p.formato === '2.39:1' || p.formato === '16:9' ? ' ancha' : ''}" data-d="${p.disciplina}">
+    const PROY = PF.proyectos.filter(p => p.disciplina !== 'foro');
+    gal.innerHTML = PROY.map(p => `<figure class="pieza${p.formato === '2.39:1' || p.formato === '16:9' ? ' ancha' : ''}" data-d="${p.disciplina}">
       <div class="lienzo">${p.foto ? `<img src="assets/img/portafolio_stock/${esc(p.foto)}" alt="${esc(p.alt || p.titulo)}" loading="lazy" decoding="async">` : CU.svg(p, 900)}<div class="grano"></div></div>
       <figcaption><b>${esc(p.titulo)}</b><span class="mono">${esc(p.disciplina)} · ${p.anio}</span></figcaption></figure>`).join('');
-    const ds = ['todo', ...new Set(PF.proyectos.map(p => p.disciplina))];
+    const ds = ['todo', ...new Set(PROY.map(p => p.disciplina))];
     fil.innerHTML = ds.map(d => `<button type="button" data-d="${d}" aria-pressed="${d === 'todo'}">${d === 'todo' ? 'Todo' : esc((CAT.disciplinas.find(x => x.id === d) || { nombre: d }).nombre)}</button>`).join('');
     fil.addEventListener('click', e => {
       const b = e.target.closest('button'); if (!b) return;
