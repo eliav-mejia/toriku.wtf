@@ -2,4 +2,9 @@
 User-agent: *
 Allow: /
 Disallow: /gracias/
+
+# AdSense (Academy L5 §03): el rastreador de anuncios lee cada página que muestra anuncios
+User-agent: Mediapartners-Google
+Allow: /
+
 Sitemap: https://toriku.wtf/sitemap.xml

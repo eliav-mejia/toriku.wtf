@@ -29,3 +29,9 @@ Responsable: **BEACON** (Agent Ops). Proyecto de prueba: palabras clave sin vali
 - Dominio `toriku.wtf` en canonical, og:url, JSON-LD (`alternateName`), robots y sitemap; `toriku.wtf` en todos los `<title>`.
 - Fotos de stock con `alt` descriptivo en portafolio y héroe; `og:image` = héroe.
 - `sitemap.xml` con extensión de imágenes (14) y `canonical` también en las páginas legales.
+
+## AdSense (preparado 2026-11-15 · Academy L5)
+
+- `robots.txt` permite explícitamente `Mediapartners-Google` (rastreador de AdSense).
+- Aviso de privacidad con sección `#publicidad` (cookies de Google, exclusión, retirar consentimiento) y enlace «Cookies y publicidad» en todos los pies.
+- El código (`<meta google-adsense-account>` + `adsbygoogle.js`) y `ads.txt` se agregan con `_interno/herramientas/inyectar-adsense.py` cuando exista el ID `ca-pub-…`. Sin anuncios en `/renta/`, `/cotizar/`, `/gracias/` ni 404.

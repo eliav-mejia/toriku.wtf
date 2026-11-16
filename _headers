@@ -1,9 +1,10 @@
 # KERNEL · cabeceras de seguridad (Cloudflare Pages / Netlify). GitHub Pages las ignora: ver SECURITY.md.
 # Sin 'unsafe-inline': no hay <script> ni style="" en línea (el JSON-LD es datos y la CSP no lo bloquea).
 # connect-src permite *.supabase.co para la renta con cuenta (assets/js/cuenta.js). React y htm se sirven desde assets/vendor/.
+# AdSense (Academy L5 §05): dominios de Google Ads en script/img/connect/frame-src; sin ellos los anuncios quedan en blanco.
 # Si se activa MEDICION_ID en analitica.js, agregar googletagmanager.com / google-analytics.com a script-src y connect-src.
 /*
-  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://*.supabase.co; form-action 'self' mailto:; frame-ancestors 'none'; base-uri 'self'
+  Content-Security-Policy: default-src 'self'; script-src 'self' https://pagead2.googlesyndication.com https://*.googlesyndication.com https://*.doubleclick.net https://*.google.com https://*.adtrafficquality.google; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://*.googlesyndication.com https://*.doubleclick.net https://*.google.com https://*.adtrafficquality.google; connect-src 'self' https://*.supabase.co https://*.googlesyndication.com https://*.doubleclick.net https://*.google.com https://*.adtrafficquality.google; frame-src https://*.googlesyndication.com https://*.doubleclick.net https://*.google.com; form-action 'self' mailto:; frame-ancestors 'none'; base-uri 'self'
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=()

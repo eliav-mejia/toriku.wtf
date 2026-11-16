@@ -146,6 +146,8 @@ a { color: inherit; }
 .pagina .mono.rojo { color: var(--rojo); }
 .texto-legal { max-width: 72ch; color: var(--papel-2); }
 .texto-legal h2 { font: 400 30px/1.1 var(--serif); color: var(--papel); margin: 40px 0 10px; }
+.texto-legal a, .enlace-boton { color: var(--papel); text-decoration: underline; text-underline-offset: 3px; }
+.enlace-boton { background: none; border: 0; padding: 0; font: inherit; cursor: pointer; }
 .cotizador { display: grid; grid-template-columns: 1.5fr 1fr; gap: clamp(28px, 5vw, 64px); align-items: start; }
 .campo { display: grid; gap: 8px; margin-bottom: 22px; }
 .campo label, .campo legend { font: 500 12px var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--papel-2); padding: 0; }
@@ -235,9 +237,9 @@ body.cajon-abierto { overflow: hidden; }
 .pieza-equipo { border-right: 1px solid var(--linea); border-bottom: 1px solid var(--linea); padding: 24px 22px 20px; display: flex; flex-direction: column; gap: 8px; transition: background .2s; }
 .pieza-equipo.elegida { background: rgba(232, 69, 44, .06); }
 .pieza-equipo .icono { color: var(--rojo); }
+.pieza-equipo .foto-equipo { display: block; width: 112px; height: 70px; padding: 6px 8px; background: var(--negro-2); border: 1px solid var(--linea); }
 .pieza-equipo h3 { font: 400 28px/1.05 var(--serif); margin: 6px 0 0; }
 .pieza-equipo p { color: var(--papel-2); margin: 0; font-size: 14px; }
-.pieza-equipo .foto-equipo { display: block; width: 112px; height: 70px; padding: 6px 8px; background: var(--negro-2); border: 1px solid var(--linea); }
 .pieza-equipo .etiqueta { color: var(--ambar); font-size: 11px; }
 .pie-equipo { margin-top: auto; padding-top: 14px; border-top: 1px dashed var(--linea-2); display: flex; justify-content: space-between; align-items: center; gap: 10px; }
 .pie-equipo b { font-size: 16px; color: var(--papel); }
