@@ -28,22 +28,21 @@
 
   // servicios desde el catálogo
   const sv = $('#lista-servicios');
-  const DIS = CAT ? CAT.disciplinas.filter(d => d.id !== 'foro') : [];  // sin foro: servicios en sitio y a distancia
+  const DIS = CAT ? CAT.disciplinas : [];
   if (sv && CAT) sv.innerHTML = DIS.map((d, i) => {
-    const base = CAT.servicios.find(s => s.sku === d.base);
     return `<article class="servicio" id="s-${d.id}">
       <span class="n mono">${String(i + 1).padStart(2, '0')} / ${String(DIS.length).padStart(2, '0')}</span>
       <h3>${esc(d.nombre)}</h3><p>${esc(d.texto)}</p>
-      <div class="desde"><span class="mono">Desde <b>${base ? mxn(base.precio) : '—'}</b></span><a class="mono" href="cotizar/?tipo=${d.id}">Cotizar →</a></div>
+      <div class="desde"><span class="mono">Desde <b>${mxn(CAT.desde(d.id))}</b></span><a class="mono" href="cotizar/?tipo=${d.id}">Cotizar →</a></div>
     </article>`;
   }).join('');
 
   // portafolio con filtros
   const gal = $('#galeria'), fil = $('#filtros');
   if (gal && PF && CU) {
-    const PROY = PF.proyectos.filter(p => p.disciplina !== 'foro');
+    const PROY = [...PF.proyectos].sort((a, b) => (b.propia ? 1 : 0) - (a.propia ? 1 : 0));  // portafolio propio primero
     gal.innerHTML = PROY.map(p => `<figure class="pieza${p.formato === '2.39:1' || p.formato === '16:9' ? ' ancha' : ''}" data-d="${p.disciplina}">
-      <div class="lienzo">${p.foto ? `<img src="assets/img/portafolio_stock/${esc(p.foto)}" alt="${esc(p.alt || p.titulo)}" loading="lazy" decoding="async">` : CU.svg(p, 900)}<div class="grano"></div></div>
+      <div class="lienzo">${p.foto ? `<img src="assets/img/${p.foto.includes('/') ? esc(p.foto) : 'portafolio_stock/' + esc(p.foto)}" alt="${esc(p.alt || p.titulo)}" loading="lazy" decoding="async">` : CU.svg(p, 900)}<div class="grano"></div></div>
       <figcaption><b>${esc(p.titulo)}</b><span class="mono">${esc(p.disciplina)} · ${p.anio}</span></figcaption></figure>`).join('');
     const ds = ['todo', ...new Set(PROY.map(p => p.disciplina))];
     fil.innerHTML = ds.map(d => `<button type="button" data-d="${d}" aria-pressed="${d === 'todo'}">${d === 'todo' ? 'Todo' : esc((CAT.disciplinas.find(x => x.id === d) || { nombre: d }).nombre)}</button>`).join('');

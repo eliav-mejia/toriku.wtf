@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Cotizar · toriku.wtf</title>
-  <meta name="description" content="Cotiza tu proyecto de foto o video en Toriku y aparta tu fecha de foro en Ciudad de México.">
+  <meta name="description" content="Cotiza tu corto, video o sesión de foto en Toriku: camarógrafos, staff, edición y equipo rentado, en sitio o a distancia. Sin registro.">
   <link rel="canonical" href="https://toriku.wtf/cotizar/">
   <meta name="theme-color" content="#0d0c0b">
   <link rel="icon" href="../assets/img/favicon.png" type="image/png">
@@ -17,7 +17,8 @@
 <header class="cabecera">
   <div class="envoltura">
     <a class="logo" href="../" aria-label="toriku.wtf, inicio"><img src="../assets/img/marca.png" alt="" width="49" height="40">TORIKU.WTF</a>
-    <nav class="nav" aria-label="Principal"><a href="../#crear">Crear</a><a href="../#compartir">Compartir</a><a href="../#cortos">Cortos</a><a href="../#red">Red</a></nav>
+    <nav class="nav" aria-label="Principal"><a href="../#crear">Crear</a><a href="../#compartir">Compartir</a><a href="../#cortos">Cortos</a><a href="../#red">Red</a><a href="../renta/">Equipo</a></nav>
+    <div id="bolsa-raiz" data-base="../"></div>
     <button class="menu" type="button" aria-expanded="false" aria-label="Abrir menú">MENÚ</button>
   </div>
 </header>
@@ -25,16 +26,26 @@
 <main class="pagina">
   <div class="envoltura">
     <span class="mono rojo">Cotizador</span>
-    <h1>Cotiza y aparta tu fecha.</h1>
-    <p class="intro">Elige el servicio, la fecha y los extras. Ves el estimado al momento; la fecha queda apartada con un anticipo fijo por servicio. Te confirmamos por correo en menos de 24 horas hábiles.</p>
+    <h1>Cotiza tu proyecto.</h1>
+    <p class="intro">Arma el servicio con los creadores que necesitas: camarógrafos, staff, días de edición y el equipo de tu bolsa. Ves el estimado al momento y no necesitas cuenta. Te confirmamos por correo en menos de 24 horas hábiles.</p>
 
     <form class="cotizador" id="cotizador" novalidate>
       <div>
-        <div class="campo"><label for="servicio">Servicio</label><select id="servicio" name="servicio" required></select></div>
+        <div class="campo"><label for="servicio">Proyecto</label><select id="servicio" name="servicio" required></select></div>
+        <fieldset class="campo"><legend>Modalidad</legend>
+          <div class="opciones">
+            <label><input type="radio" name="modalidad" value="sitio" checked><span><b>En sitio</b><small>La red va a tu locación en CDMX y zona metropolitana</small></span></label>
+            <label><input type="radio" name="modalidad" value="distancia"><span><b>A distancia</b><small>Edición, color, guion y entrega en línea, sin traslado</small></span></label>
+          </div>
+        </fieldset>
         <div class="dos">
-          <div class="campo"><label for="fecha">Fecha de set</label><input id="fecha" name="fecha" type="date" required><div class="ocupada" id="ocupada" aria-live="polite"></div></div>
-          <div class="campo"><label for="cantidad">Cantidad <span id="unidad"></span></label><input id="cantidad" name="cantidad" type="number" min="1" max="30" value="1" required></div>
+          <div class="campo"><label for="fecha">Fecha de inicio</label><input id="fecha" name="fecha" type="date" required><div class="ocupada" id="ocupada" aria-live="polite"></div></div>
+          <div class="campo"><label for="jornadas">Jornadas de rodaje (10 h)</label><input id="jornadas" name="jornadas" type="number" min="1" max="30" value="1" required></div>
         </div>
+        <fieldset class="campo"><legend>Equipo humano por jornada</legend><div class="equipo-humano" id="roles"></div></fieldset>
+        <div class="campo"><label for="edicion">Días de edición y color (a distancia)</label><input id="edicion" name="edicion" type="number" min="0" max="30" value="1"></div>
+        <fieldset class="campo" id="equipo"><legend>Equipo rentado</legend><div id="equipo-cotizacion" class="equipo-cotizacion"></div></fieldset>
+        <label class="casilla-foro" for="foro"><input type="checkbox" id="foro" name="foro"><span><b>Agregar foro con ciclorama</b><small id="foro-precio"></small></span></label>
         <fieldset class="campo"><legend>Extras</legend><div class="extras" id="extras"></div></fieldset>
         <div class="dos">
           <div class="campo"><label for="nombre">Nombre</label><input id="nombre" name="nombre" autocomplete="name" required></div>
@@ -66,6 +77,11 @@
 <script src="../assets/js/analitica.js"></script>
 <script src="../data/catalogo.js"></script>
 <script src="../data/portafolio.js"></script>
+<script src="../assets/js/bolsa.js"></script>
 <script src="cotizar.js"></script>
+<script src="../assets/vendor/react.production.min.js"></script>
+<script src="../assets/vendor/react-dom.production.min.js"></script>
+<script src="../assets/vendor/htm.umd.js"></script>
+<script src="../assets/js/bolsa-app.js"></script>
 </body>
 </html>

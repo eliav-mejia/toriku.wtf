@@ -18,6 +18,7 @@
     <image:image><image:loc>https://toriku.wtf/assets/img/portafolio_stock/chef.jpg</image:loc></image:image><!-- Chef residente · perfil -->
     <image:image><image:loc>https://toriku.wtf/assets/img/portafolio_stock/audio.jpg</image:loc></image:image><!-- Audio · color sólido -->
   </url>
+  <url><loc>https://toriku.wtf/renta/</loc><lastmod>2026-11-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://toriku.wtf/cotizar/</loc><lastmod>2026-11-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://toriku.wtf/legal/aviso-de-privacidad.html</loc><lastmod>2026-11-15</lastmod><changefreq>yearly</changefreq><priority>0.2</priority></url>
   <url><loc>https://toriku.wtf/legal/terminos.html</loc><lastmod>2026-11-15</lastmod><changefreq>yearly</changefreq><priority>0.2</priority></url>

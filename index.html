@@ -43,8 +43,9 @@
   <div class="envoltura">
     <a class="logo" href="./" aria-label="toriku.wtf, inicio"><img src="assets/img/marca.png" alt="" width="49" height="40">TORIKU.WTF</a>
     <nav class="nav" aria-label="Principal">
-      <a href="#crear">Crear</a><a href="#compartir">Compartir</a><a href="#cortos">Cortos</a><a href="#red">Red</a><a class="solo-movil" href="cotizar/">Cotizar</a>
+      <a href="#crear">Crear</a><a href="#compartir">Compartir</a><a href="#cortos">Cortos</a><a href="#red">Red</a><a href="renta/">Equipo</a><a class="solo-movil" href="cotizar/">Cotizar</a>
     </nav>
+    <div id="bolsa-raiz" data-base=""></div>
     <a class="boton" href="cotizar/">Cotizar</a>
     <button class="menu" type="button" aria-expanded="false" aria-label="Abrir menú">MENÚ</button>
   </div>
@@ -77,9 +78,10 @@
     <div class="envoltura">
       <div class="encabezado">
         <div><span class="mono">01 · Crear</span><h2>Servicios para crear.</h2></div>
-        <p>Del corto de un fin de semana a la campaña de varios días. Cada servicio lo da nuestra red de creadores, en tu locación o a distancia, con preproducción, rodaje y entrega con color corregido.</p>
+        <p>Del corto de un fin de semana a la campaña de varios días. Cada servicio lo da nuestra red de creadores, en tu locación o a distancia: pagas por camarógrafos, staff, días de edición y el equipo que rentes.</p>
       </div>
       <div class="servicios" id="lista-servicios"></div>
+      <div class="acciones fila-renta"><a class="boton hueco" href="renta/">Rentar equipo por día</a><span class="mono">Cámaras con operador · tripiés · luz Metz · ciclorama · audio y estabilizador DJI</span></div>
     </div>
   </section>
 
@@ -128,7 +130,7 @@
       </div>
       <div class="filtros" id="filtros" role="group" aria-label="Filtrar por disciplina"></div>
       <div class="galeria" id="galeria"></div>
-      <p class="mono aviso-muestra">Piezas de muestra mientras llega el trabajo de la red.</p>
+      <p class="mono aviso-muestra">Portafolio de la red y piezas de muestra.</p>
     </div>
   </section>
 
@@ -160,7 +162,7 @@
 <footer class="pie">
   <div class="envoltura">
     <div><a class="logo" href="./"><img src="assets/img/marca.png" alt="" width="49" height="40">TORIKU.WTF</a><p>Crear y compartir cortometrajes.<br>Creadores en México.</p></div>
-    <div><h4>Toriku</h4><ul><li><a href="#crear">Crear</a></li><li><a href="#compartir">Compartir</a></li><li><a href="#cortos">Cortos</a></li><li><a href="#red">Red</a></li><li><a href="cotizar/">Cotizar</a></li></ul></div>
+    <div><h4>Toriku</h4><ul><li><a href="#crear">Crear</a></li><li><a href="#compartir">Compartir</a></li><li><a href="#cortos">Cortos</a></li><li><a href="#red">Red</a></li><li><a href="renta/">Renta de equipo</a></li><li><a href="cotizar/">Cotizar</a></li></ul></div>
     <div><h4>Legal</h4><ul><li><a href="legal/aviso-de-privacidad.html">Aviso de privacidad</a></li><li><a href="legal/terminos.html">Términos de reserva</a></li></ul></div>
     <div class="legal mono"><span>© <span id="anio">2026</span> Toriku</span><span>Proyecto de prueba · Lameyer Agent Ops</span></div>
   </div>
@@ -171,5 +173,10 @@
 <script src="data/portafolio.js"></script>
 <script src="assets/js/cuadros.js"></script>
 <script src="assets/js/toriku.js"></script>
+<script src="assets/js/bolsa.js"></script>
+<script src="assets/vendor/react.production.min.js"></script>
+<script src="assets/vendor/react-dom.production.min.js"></script>
+<script src="assets/vendor/htm.umd.js"></script>
+<script src="assets/js/bolsa-app.js"></script>
 </body>
 </html>

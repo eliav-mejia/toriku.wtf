@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Renta de equipo · toriku.wtf</title>
+  <meta name="description" content="Renta cámaras con operador, tripiés, iluminación Metz, ciclorama portátil, telas, micrófono inalámbrico y estabilizador DJI en Ciudad de México. Precio por día.">
+  <link rel="canonical" href="https://toriku.wtf/renta/">
+  <meta name="theme-color" content="#0d0c0b">
+  <link rel="icon" href="../assets/img/favicon.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap">
+  <link rel="stylesheet" href="../assets/css/toriku.css">
+</head>
+<body>
+<a class="saltar" href="#contenido">Saltar al contenido</a>
+<header class="cabecera">
+  <div class="envoltura">
+    <a class="logo" href="../" aria-label="toriku.wtf, inicio"><img src="../assets/img/marca.png" alt="" width="49" height="40">TORIKU.WTF</a>
+    <nav class="nav" aria-label="Principal"><a href="../#crear">Crear</a><a href="../#compartir">Compartir</a><a href="../#cortos">Cortos</a><a href="../#red">Red</a><a href="./" aria-current="page">Equipo</a><a class="solo-movil" href="../cotizar/">Cotizar</a></nav>
+    <div id="bolsa-raiz" data-base="../"></div>
+    <a class="boton" href="../cotizar/">Cotizar</a>
+    <button class="menu" type="button" aria-expanded="false" aria-label="Abrir menú">MENÚ</button>
+  </div>
+</header>
+
+<main class="pagina" id="contenido">
+  <div class="envoltura">
+    <span class="mono rojo">Renta de equipo</span>
+    <h1>Arma tu bolsa de equipo.</h1>
+    <p class="intro">Precio por pieza y por día. Lo que agregues aquí se suma solo a tu cotización mientras navegas el sitio. Las cámaras se rentan siempre con un operador de nuestra red, que se cotiza aparte. Cotizar no requiere cuenta; para rentar solo el equipo te pedimos registrarte con tu correo.</p>
+    <div id="catalogo-equipo"><noscript><p class="aviso">Activa JavaScript para usar la bolsa de equipo, o escríbenos a hola@toriku.wtf.</p></noscript></div>
+    <p class="mono aviso-muestra">Precios de muestra · proyecto de prueba</p>
+
+    <section class="seccion-renta" id="rentar" aria-labelledby="t-rentar">
+      <span class="mono rojo">Rentar</span>
+      <h2 id="t-rentar">Rentar solo el equipo.</h2>
+      <div id="rentar-raiz"></div>
+    </section>
+  </div>
+</main>
+
+<footer class="pie">
+  <div class="envoltura">
+    <div class="legal mono"><span>© 2026 Toriku · Ciudad de México</span><span><a href="../legal/aviso-de-privacidad.html">Aviso de privacidad</a> · <a href="../legal/terminos.html">Términos</a></span></div>
+  </div>
+</footer>
+
+<script src="../assets/js/analitica.js"></script>
+<script src="../data/catalogo.js"></script>
+<script src="../data/supabase.js"></script>
+<script src="../assets/js/bolsa.js"></script>
+<script src="../assets/js/cuenta.js"></script>
+<script src="../assets/vendor/react.production.min.js"></script>
+<script src="../assets/vendor/react-dom.production.min.js"></script>
+<script src="../assets/vendor/htm.umd.js"></script>
+<script src="../assets/js/bolsa-app.js"></script>
+<script src="../assets/js/menu.js"></script>
+</body>
+</html>
