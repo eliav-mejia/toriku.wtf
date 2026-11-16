@@ -176,6 +176,25 @@
     </form>`;
   }
 
+  // ── móvil: el menú desplegable abre la bolsa (el botón de la cabecera se oculta < 720 px)
+  function BolsaNav() {
+    const r = resumenDe(useBolsa());
+    const en = document.documentElement.lang.startsWith('en');
+    return html`<button type="button" className="nav-bolsa" aria-haspopup="dialog" onClick=${() => {
+        document.body.classList.remove('menu-abierto');
+        const m = document.querySelector('.menu'); if (m) m.setAttribute('aria-expanded', 'false');
+        B.abrir();
+      }}>
+      <span>${en ? 'Gear bag' : 'Bolsa de equipo'}</span><span className="cuenta-piezas" aria-label=${r.piezas + (en ? ' items' : ' piezas')}>${r.piezas}</span>
+    </button>`;
+  }
+  const nav = document.querySelector('.cabecera .nav');
+  if (nav && raiz) {
+    const el = document.createElement('div'); el.className = 'solo-movil nav-bolsa-raiz';
+    nav.insertBefore(el, nav.querySelector('.solo-movil'));
+    ReactDOM.createRoot(el).render(html`<${BolsaNav} />`);
+  }
+
   const montar = (id, C) => { const el = document.getElementById(id); if (el) ReactDOM.createRoot(el).render(html`<${C} />`); };
   montar('bolsa-raiz', Bolsa);
   montar('catalogo-equipo', Catalogo);
