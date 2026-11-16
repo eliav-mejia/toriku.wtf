@@ -4,7 +4,7 @@
    el servicio se arma por jornada según camarógrafos, staff, edición y equipo rentado. El foro es solo una casilla opcional. */
 window.TORIKU_CATALOGO = (() => {
   const C = {
-    version: '2.0.0',
+    version: '2.1.0',
     muestra: true,
     moneda: 'MXN',
     iva: 0.16,
@@ -55,16 +55,21 @@ window.TORIKU_CATALOGO = (() => {
 
     // Renta de equipo: precio por pieza y día. Las cámaras se rentan SOLO con operador, que se cotiza aparte.
     equipo: [
-      { id: 'sony-a7rii',  sku: 'TK-E-A7RII', tipo: 'camara',  nombre: 'Sony α7R II',                    detalle: 'Cuerpo full frame + lente 24-70 mm, 2 baterías', precio: 900, operador: true },
-      { id: 'sony-a6400',  sku: 'TK-E-A6400', tipo: 'camara',  nombre: 'Sony α6400',                     detalle: 'Cámara digital APS-C + lente kit, 2 baterías',  precio: 550, operador: true },
-      { id: 'canon-t7',    sku: 'TK-E-T7',    tipo: 'camara',  nombre: 'Canon EOS Rebel T7',             detalle: 'Cuerpo + lente 18-55 mm, batería extra',        precio: 350, operador: true },
-      { id: 'metz',        sku: 'TK-E-METZ',  tipo: 'luz',     nombre: 'Iluminación Metz',               detalle: 'Flash Metz con disparador y softbox',          precio: 300 },
-      { id: 'ciclorama',   sku: 'TK-E-CICLO', tipo: 'fondo',   nombre: 'Ciclorama portátil',             detalle: 'Fondo infinito 3 × 3 m con estructura',        precio: 900 },
-      { id: 'telas',       sku: 'TK-E-TELAS', tipo: 'fondo',   nombre: 'Telas y fondos',                 detalle: 'Juego de muselinas, negro, blanco y croma',    precio: 180 },
-      { id: 'tripie-video',sku: 'TK-E-TRIV',  tipo: 'soporte', nombre: 'Tripié de video',                detalle: 'Cabeza fluida, hasta 8 kg',                    precio: 250 },
-      { id: 'tripie-foto', sku: 'TK-E-TRIF',  tipo: 'soporte', nombre: 'Tripié de foto',                 detalle: 'Aluminio, cabeza de bola',                     precio: 120 },
-      { id: 'dji-mic',     sku: 'TK-E-MIC',   tipo: 'audio',   nombre: 'Micrófono inalámbrico DJI',      detalle: '2 transmisores + receptor',                    precio: 350 },
-      { id: 'dji-gimbal',  sku: 'TK-E-GIMB',  tipo: 'soporte', nombre: 'Estabilizador DJI',              detalle: 'Gimbal de 3 ejes para cámaras sin espejo',     precio: 500 }
+      // Orden de vitrina: Sony α7R II, Metz, ciclorama y telas primero. Rango 120–900 MXN/día: la α7R II es la pieza
+      // más cara y el ciclorama la más económica. «img» = miniatura en assets/img/equipo/ (ilustración de línea, no foto de marca).
+      { id: 'sony-a7rii',  sku: 'TK-E-A7RII', tipo: 'camara',  nombre: 'Sony α7R II',                    detalle: 'Cuerpo full frame + lente 24-70 mm, 2 baterías', precio: 900, operador: true, img: 'sony-a7rii' },
+      { id: 'metz',        sku: 'TK-E-METZ',  tipo: 'luz',     nombre: 'Iluminación Metz',               detalle: 'Flash Metz con disparador y softbox',          precio: 300, img: 'metz' },
+      { id: 'ciclorama',   sku: 'TK-E-CICLO', tipo: 'fondo',   nombre: 'Ciclorama portátil',             detalle: 'Fondo infinito 3 × 3 m con estructura',        precio: 120, img: 'ciclorama' },
+      { id: 'telas',       sku: 'TK-E-TELAS', tipo: 'fondo',   nombre: 'Telas y fondos',                 detalle: 'Juego de muselinas, negro, blanco y croma',    precio: 180, img: 'telas' },
+      { id: 'lente-fe50',  sku: 'TK-E-L50',   tipo: 'lente',   nombre: 'Sony FE 50 mm f/1.8',            detalle: 'Montura E · fijo luminoso para retrato y video', precio: 250, img: 'lente-50' },
+      { id: 'lente-fe85',  sku: 'TK-E-L85',   tipo: 'lente',   nombre: 'Sony FE 85 mm f/1.8',            detalle: 'Montura E · tele corto para retrato y beauty',  precio: 350, img: 'lente-85' },
+      { id: 'lente-a70200',sku: 'TK-E-L70200',tipo: 'lente',   nombre: 'Sony 70-200 mm f/2.8 G',         detalle: 'Montura A · con adaptador LA-EA4 para montura E', precio: 600, img: 'lente-70200' },
+      { id: 'sony-a6400',  sku: 'TK-E-A6400', tipo: 'camara',  nombre: 'Sony α6400',                     detalle: 'Cámara digital APS-C + lente kit, 2 baterías',  precio: 550, operador: true, img: 'sony-a6400' },
+      { id: 'canon-t7',    sku: 'TK-E-T7',    tipo: 'camara',  nombre: 'Canon EOS Rebel T7',             detalle: 'Cuerpo + lente 18-55 mm, batería extra',        precio: 350, operador: true, img: 'canon-t7' },
+      { id: 'tripie-video',sku: 'TK-E-TRIV',  tipo: 'soporte', nombre: 'Tripié de video',                detalle: 'Cabeza fluida, hasta 8 kg',                    precio: 250, img: 'tripie-video' },
+      { id: 'tripie-foto', sku: 'TK-E-TRIF',  tipo: 'soporte', nombre: 'Tripié de foto',                 detalle: 'Aluminio, cabeza de bola',                     precio: 150, img: 'tripie-foto' },
+      { id: 'dji-mic',     sku: 'TK-E-MIC',   tipo: 'audio',   nombre: 'Micrófono inalámbrico DJI',      detalle: '2 transmisores + receptor',                    precio: 350, img: 'dji-mic' },
+      { id: 'dji-gimbal',  sku: 'TK-E-GIMB',  tipo: 'soporte', nombre: 'Estabilizador DJI',              detalle: 'Gimbal de 3 ejes para cámaras sin espejo',     precio: 500, img: 'dji-gimbal' }
     ],
     operador: { sku: 'TK-E-OPER', nombre: 'Operador de cámara', precio: 1800 }
   };

@@ -22,6 +22,7 @@
     luz: 'M12 2v3M5 5l2 2M19 5l-2 2M7 13a5 5 0 1 1 10 0c0 2-1 3-2 4v2H9v-2c-1-1-2-2-2-4zM9 22h6',
     fondo: 'M3 4h18M5 4v10q0 6 6 6h10',
     soporte: 'M12 3v6M12 9l-7 12M12 9l7 12M12 9v12M9 3h6',
+    lente: 'M7 6h10v12H7zM17 8h3v8h-3M7 9H4v6h3M10 6v12M14 6v12',
     audio: 'M12 3a3 3 0 0 1 3 3v6a3 3 0 0 1-6 0V6a3 3 0 0 1 3-3zM5 11a7 7 0 0 0 14 0M12 18v3'
   };
   const Icono = ({ tipo }) => html`<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinejoin="round" strokeLinecap="round" aria-hidden="true"><path d=${ICONOS[tipo] || ICONOS.soporte} /></svg>`;
@@ -87,7 +88,7 @@
   }
 
   // ── /renta/: catálogo
-  const TIPOS = [['todo', 'Todo'], ['camara', 'Cámaras'], ['luz', 'Luz'], ['fondo', 'Fondos'], ['soporte', 'Soporte'], ['audio', 'Audio']];
+  const TIPOS = [['todo', 'Todo'], ['camara', 'Cámaras'], ['lente', 'Lentes'], ['luz', 'Luz'], ['fondo', 'Fondos'], ['soporte', 'Soporte'], ['audio', 'Audio']];
   function Catalogo() {
     const b = useBolsa();
     const [tipo, setTipo] = useState('todo');
@@ -100,7 +101,8 @@
         ${lista.map(e => {
           const q = b.items[e.id] || 0;
           return html`<article key=${e.id} className=${'pieza-equipo' + (q ? ' elegida' : '')}>
-            <div className="icono"><${Icono} tipo=${e.tipo} /></div>
+            ${e.img ? html`<img className="foto-equipo" src=${BASE + 'assets/img/equipo/' + e.img + '.svg'} alt="" width="160" height="100" loading="lazy" decoding="async" />`
+                    : html`<div className="icono"><${Icono} tipo=${e.tipo} /></div>`}
             <h3>${e.nombre}</h3><p>${e.detalle}</p>
             ${e.operador && html`<p className="etiqueta mono">Solo con operador · +${mxn(CAT.operador.precio)}/día aparte</p>`}
             <div className="pie-equipo"><span className="mono"><b>${mxn(e.precio)}</b> / día</span>

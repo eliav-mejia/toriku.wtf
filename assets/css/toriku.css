@@ -237,6 +237,7 @@ body.cajon-abierto { overflow: hidden; }
 .pieza-equipo .icono { color: var(--rojo); }
 .pieza-equipo h3 { font: 400 28px/1.05 var(--serif); margin: 6px 0 0; }
 .pieza-equipo p { color: var(--papel-2); margin: 0; font-size: 14px; }
+.pieza-equipo .foto-equipo { display: block; width: 112px; height: 70px; padding: 6px 8px; background: var(--negro-2); border: 1px solid var(--linea); }
 .pieza-equipo .etiqueta { color: var(--ambar); font-size: 11px; }
 .pie-equipo { margin-top: auto; padding-top: 14px; border-top: 1px dashed var(--linea-2); display: flex; justify-content: space-between; align-items: center; gap: 10px; }
 .pie-equipo b { font-size: 16px; color: var(--papel); }
