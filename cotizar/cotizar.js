@@ -47,7 +47,10 @@
     };
     const sv = CAT.cotizarServicio(sel), eq = B ? B.resumen() : { lineas: [], operador: null, subtotal: 0, piezas: 0, dias: 1 };
     const sub = sv.subtotal + eq.subtotal, iva = Math.round(sub * CAT.iva), total = sub + iva, ant = Math.round(total * CAT.anticipo);
-    return { sel, sv, eq, sub, iva, total, ant, saldo: total - ant };
+    // Viáticos aparte: crew en sitio por jornada + operadores de cámara por día de renta. No suman al total ni al anticipo.
+    const crew = sel.modalidad === 'distancia' ? 0 : Object.values(equipo).reduce((n, x) => n + x, 0), ops = eq.operador ? eq.operador.cantidad : 0;
+    const via = CAT.cotizarViaticos({ personasDia: crew * sel.jornadas + ops * eq.dias, personas: crew + ops, noches: num('#noches', 0, 30), km: num('#km', 0, 5000) });
+    return { sel, sv, eq, sub, iva, total, ant, saldo: total - ant, via, personas: crew + ops };
   }
 
   function pintaEquipo(eq) {
@@ -70,6 +73,10 @@
       `<dt>Subtotal</dt><dd>${mxn(c.sub)}</dd><dt>IVA ${Math.round(CAT.iva * 100)} %</dt><dd>${mxn(c.iva)}</dd>` +
       `<dt class="total">Total estimado</dt><dd class="total">${mxn(c.total)}</dd>` +
       `<dt>Anticipo ${Math.round(CAT.anticipo * 100)} % para apartar</dt><dd>${mxn(c.ant)}</dd><dt>Saldo a la entrega</dt><dd>${mxn(c.saldo)}</dd>`;
+    $('#viaticos-nota').textContent = `${c.personas} persona(s) en sitio · alimentos ${mxn(CAT.viaticos.alimentos)} por persona y día · hospedaje ${mxn(CAT.viaticos.hospedaje)} por persona y noche · transporte ${mxn(CAT.viaticos.km)} por km.`;
+    $('#resumen-viaticos').innerHTML = `<h3>Viáticos · aparte</h3>` +
+      (c.via.lineas.length ? `<dl>${c.via.lineas.map(l => `<dt>${esc(l.nombre)}</dt><dd>${mxn(l.importe)}</dd>`).join('')}<dt class="total">Viáticos estimados</dt><dd class="total">${mxn(c.via.total)}</dd></dl>` : '') +
+      `<p>La renta de equipo y el servicio no incluyen viáticos. Se calculan por separado: no suman al total ni al anticipo.</p>`;
     $('#enviar').textContent = 'Enviar cotización';
     $('#nota').textContent = 'No necesitas cuenta para cotizar. Te enviamos la confirmación y el enlace de pago del anticipo por correo.';
   }
@@ -90,6 +97,7 @@
       ...(c.eq.piezas ? ['', `Equipo rentado (${c.eq.dias} días):`, ...c.eq.lineas.map(l => `  ${l.nombre} × ${l.cantidad}: ${mxn(l.importe)}`)] : []),
       ...(c.eq.operador ? [`  ${c.eq.operador.nombre} × ${c.eq.operador.cantidad} (aparte): ${mxn(c.eq.operador.importe)}`] : []), '',
       `Total estimado: ${mxn(c.total)} (IVA incluido) · Anticipo: ${mxn(c.ant)} · Saldo: ${mxn(c.saldo)}`, '',
+      'Viáticos (aparte, no incluidos en el total):', ...(c.via.lineas.length ? c.via.lineas.map(l => `  ${l.nombre}: ${mxn(l.importe)}`).concat(`  Viáticos estimados: ${mxn(c.via.total)}`) : ['  Por calcular']), '',
       `Nombre: ${d.nombre}`, `Empresa: ${d.empresa || '—'}`, `Correo: ${d.correo}`, '', d.notas || ''].join('\n');
     location.href = `mailto:${CAT.correo}?subject=${encodeURIComponent('Cotización Toriku · ' + disc.nombre + ' · ' + d.fecha)}&body=${encodeURIComponent(cuerpo)}`;
     setTimeout(() => { location.href = '../gracias/?solicitud=1'; }, 800);

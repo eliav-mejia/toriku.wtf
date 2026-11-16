@@ -42,7 +42,17 @@
       ${r.operador && html`<dt className="op">${r.operador.nombre} × ${r.operador.cantidad} · ${r.dias} d <small>obligatorio, se cotiza aparte</small></dt><dd className="op">${mxn(r.operador.importe)}</dd>`}
       <dt className="total">Subtotal equipo</dt><dd className="total">${mxn(r.subtotal)}</dd>
       <dt>Con IVA ${Math.round(CAT.iva * 100)} %</dt><dd>${mxn(r.subtotal + iva)}</dd>
-    </dl>`;
+    </dl>
+    <${Viaticos} r=${r} />`;
+  }
+
+  // La renta de equipo NO incluye viáticos: se calculan por separado y no suman al subtotal.
+  function Viaticos({ r }) {
+    const v = r.operador ? CAT.cotizarViaticos({ personasDia: r.operador.cantidad * r.dias }) : { lineas: [], total: 0 };
+    return html`<div className="viaticos-aparte"><h3>Viáticos · aparte</h3>
+      ${v.total ? html`<dl>${v.lineas.map(l => html`<${React.Fragment} key=${l.nombre}><dt>${l.nombre} (operador)</dt><dd>${mxn(l.importe)}</dd><//>`)}</dl>` : null}
+      <p>La renta no incluye viáticos (alimentos, hospedaje y transporte fuera de la zona local). Se calculan por separado y no se suman al total.</p>
+    </div>`;
   }
 
   // ── cabecera: botón + cajón
@@ -167,7 +177,7 @@
           <div className="campo"><label htmlFor="r-fecha">Fecha de entrega</label><input id="r-fecha" type="date" min=${manana} required value=${fecha} onInput=${e => setFecha(e.target.value)} /></div>
           <div className="campo"><span className="etq mono">Días de renta</span><${Contador} valor=${b.dias} min=${1} max=${30} etiqueta="Días de renta" onCambio=${B.dias} /></div>
         </div>
-        <div className="campo"><label htmlFor="r-notas">Notas (dirección de entrega en CDMX, horario)</label><textarea id="r-notas" maxLength="2000" value=${notas} onInput=${e => setNotas(e.target.value)}></textarea></div>
+        <div className="campo"><label htmlFor="r-notas">Notas (dirección de entrega, horario)</label><textarea id="r-notas" maxLength="2000" value=${notas} onInput=${e => setNotas(e.target.value)}></textarea></div>
       </div>
       <div className="resumen"><h2>Tu renta</h2><${Totales} r=${r} />
         <button className="boton" type="submit" disabled=${ocupado}>Solicitar renta</button>

@@ -14,12 +14,12 @@
   if (menu) menu.addEventListener('click', () => { const o = document.body.classList.toggle('menu-abierto'); menu.setAttribute('aria-expanded', o); });
   document.querySelectorAll('.nav a').forEach(a => a.addEventListener('click', () => document.body.classList.remove('menu-abierto')));
 
-  // héroe: foto de rodaje (stock) + código de tiempo
+  // héroe: Games (assets/img/Games/) · Control Resonant de fondo + póster GTA VI completo · código de tiempo
   const heroe = $('.cuadro-heroe');
   // slider: cambia de cuadro cada 6 s (en el segundo 6, 12, 18… del código de tiempo)
   if (heroe) {
-    heroe.innerHTML = `<img class="activo" src="${B}assets/img/portafolio_stock/heroe.jpg" alt="" decoding="async" fetchpriority="high">`
-      + `<img class="portada" src="${B}assets/img/heroe-portada.jpg" alt="" decoding="async" loading="lazy">`;
+    heroe.innerHTML = `<img class="activo" src="${B}assets/img/Games/Control%20Resonant.jpg" alt="" decoding="async" fetchpriority="high">`
+      + `<img class="portada" src="${B}assets/img/Games/GTA%20VI.jpg" alt="" decoding="async" loading="lazy">`;
     const cuadros = heroe.querySelectorAll('img');
     let k = 0;
     if (!matchMedia('(prefers-reduced-motion: reduce)').matches) setInterval(() => {

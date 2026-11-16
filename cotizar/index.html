@@ -34,7 +34,7 @@
         <div class="campo"><label for="servicio">Proyecto</label><select id="servicio" name="servicio" required></select></div>
         <fieldset class="campo"><legend>Modalidad</legend>
           <div class="opciones">
-            <label><input type="radio" name="modalidad" value="sitio" checked><span><b>En sitio</b><small>La red va a tu locación en CDMX y zona metropolitana</small></span></label>
+            <label><input type="radio" name="modalidad" value="sitio" checked><span><b>En sitio</b><small>La red va a tu locación</small></span></label>
             <label><input type="radio" name="modalidad" value="distancia"><span><b>A distancia</b><small>Edición, color, guion y entrega en línea, sin traslado</small></span></label>
           </div>
         </fieldset>
@@ -45,6 +45,13 @@
         <fieldset class="campo"><legend>Equipo humano por jornada</legend><div class="equipo-humano" id="roles"></div></fieldset>
         <div class="campo"><label for="edicion">Días de edición y color (a distancia)</label><input id="edicion" name="edicion" type="number" min="0" max="30" value="1"></div>
         <fieldset class="campo" id="equipo"><legend>Equipo rentado</legend><div id="equipo-cotizacion" class="equipo-cotizacion"></div></fieldset>
+        <fieldset class="campo" id="viaticos"><legend>Viáticos · se calculan aparte</legend>
+          <div class="dos">
+            <div class="campo"><label for="noches">Noches de hospedaje</label><input id="noches" name="noches" type="number" min="0" max="30" value="0"></div>
+            <div class="campo"><label for="km">Km de transporte foráneo (ida y vuelta)</label><input id="km" name="km" type="number" min="0" max="5000" step="10" value="0"></div>
+          </div>
+          <p class="nota-viaticos" id="viaticos-nota"></p>
+        </fieldset>
         <label class="casilla-foro" for="foro"><input type="checkbox" id="foro" name="foro"><span><b>Agregar foro con ciclorama</b><small id="foro-precio"></small></span></label>
         <fieldset class="campo"><legend>Extras</legend><div class="extras" id="extras"></div></fieldset>
         <div class="dos">
@@ -61,6 +68,7 @@
       <aside class="resumen" aria-live="polite">
         <h2>Estimado</h2>
         <dl id="resumen"></dl>
+        <div class="viaticos-aparte" id="resumen-viaticos"></div>
         <button class="boton" type="submit" id="enviar">Apartar fecha</button>
         <p class="nota" id="nota"></p>
       </aside>
@@ -70,7 +78,7 @@
 
 <footer class="pie">
   <div class="envoltura">
-    <div class="legal mono"><span>© 2026 Toriku · Ciudad de México</span><span><a href="../blog/">Blog</a> · <a href="../legal/aviso-de-privacidad.html">Aviso de privacidad</a> · <a href="../legal/terminos.html">Términos</a> · <a href="../legal/aviso-de-privacidad.html#publicidad">Cookies y publicidad</a></span></div>
+    <div class="legal mono"><span>© 2026 Toriku · Ciudad de México</span><span><a href="../blog/">Blog</a> · <a href="../legal/aviso-de-privacidad.html">Aviso de privacidad</a> · <a href="../legal/terminos.html">Términos</a> · <a href="../legal/aviso-de-privacidad.html#publicidad">Cookies y publicidad</a></span><span>TORIKU.WTF · Powered by lameyer.net · Una producción de Troop Branding Company</span></div>
   </div>
 </footer>
 
@@ -83,5 +91,6 @@
 <script src="../assets/vendor/react-dom.production.min.js"></script>
 <script src="../assets/vendor/htm.umd.js"></script>
 <script src="../assets/js/bolsa-app.js"></script>
+<script src="../assets/js/cookies.js"></script>
 </body>
 </html>

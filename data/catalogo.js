@@ -4,7 +4,7 @@
    el servicio se arma por jornada según camarógrafos, staff, edición y equipo rentado. El foro es solo una casilla opcional. */
 window.TORIKU_CATALOGO = (() => {
   const C = {
-    version: '2.1.0',
+    version: '2.2.0',
     muestra: true,
     moneda: 'MXN',
     iva: 0.16,
@@ -12,7 +12,7 @@ window.TORIKU_CATALOGO = (() => {
     correo: 'hola@toriku.wtf',
 
     // Por jornada (10 h). Solo en sitio.
-    traslado: { sku: 'TK-TRASLADO', nombre: 'Traslado del equipo (CDMX y zona metropolitana)', precio: 450 },
+    traslado: { sku: 'TK-TRASLADO', nombre: 'Traslado del equipo (zona local)', precio: 450 },
 
     // Equipo humano de la red: precio por persona y jornada.
     roles: [
@@ -71,7 +71,11 @@ window.TORIKU_CATALOGO = (() => {
       { id: 'dji-mic',     sku: 'TK-E-MIC',   tipo: 'audio',   nombre: 'Micrófono inalámbrico DJI',      detalle: '2 transmisores + receptor',                    precio: 350, img: 'dji-mic' },
       { id: 'dji-gimbal',  sku: 'TK-E-GIMB',  tipo: 'soporte', nombre: 'Estabilizador DJI',              detalle: 'Gimbal de 3 ejes para cámaras sin espejo',     precio: 500, img: 'dji-gimbal' }
     ],
-    operador: { sku: 'TK-E-OPER', nombre: 'Operador de cámara', precio: 1800 }
+    operador: { sku: 'TK-E-OPER', nombre: 'Operador de cámara', precio: 1800 },
+
+    // Viáticos (2.2.0, 2026-11-16): NO van incluidos en la renta de equipo ni en el total del servicio; se calculan por separado.
+    // Muestra: alimentos por persona y día de trabajo, hospedaje por persona y noche, transporte foráneo por km (ida y vuelta).
+    viaticos: { alimentos: 350, hospedaje: 1200, km: 8 }
   };
 
   const rol = id => C.roles.find(r => r.id === id);
@@ -102,6 +106,15 @@ window.TORIKU_CATALOGO = (() => {
     const operador = camaras ? { nombre: C.operador.nombre, cantidad: camaras, unitario: C.operador.precio, importe: C.operador.precio * camaras * dias } : null;
     const subtotal = lineas.reduce((n, l) => n + l.importe, 0) + (operador ? operador.importe : 0);
     return { dias, lineas, operador, subtotal, piezas: lineas.reduce((n, l) => n + l.cantidad, 0) };
+  };
+
+  // Viáticos, aparte: { personasDia: personas × días de trabajo, personas, noches, km }. Nunca suman al subtotal ni al anticipo.
+  C.cotizarViaticos = v => {
+    const V = C.viaticos, pd = Math.max(0, v.personasDia | 0), per = Math.max(0, v.personas | 0), no = Math.max(0, v.noches | 0), km = Math.max(0, v.km | 0), lineas = [];
+    if (pd) lineas.push({ nombre: `Alimentos · ${pd} persona-día`, importe: V.alimentos * pd });
+    if (per && no) lineas.push({ nombre: `Hospedaje · ${per} pers. × ${no} noches`, importe: V.hospedaje * per * no });
+    if (km) lineas.push({ nombre: `Transporte foráneo · ${km} km`, importe: V.km * km });
+    return { lineas, total: lineas.reduce((n, l) => n + l.importe, 0) };
   };
 
   C.desde = id => {
