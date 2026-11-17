@@ -50,11 +50,10 @@
   }
 
   // La renta de equipo NO incluye viáticos: se calculan por separado y no suman al subtotal.
-  function Viaticos({ r }) {
-    const v = r.operador ? CAT.cotizarViaticos({ personasDia: r.operador.cantidad * r.dias }) : { lineas: [], total: 0 };
+  function Viaticos() {
+    const zonas = CAT.viaticos.zonas.map(z => `${z.nombre}: ${z.precio ? mxn(z.precio) : t('sin costo', 'no cost')}${z.avisoHoras ? ` (${z.avisoHoras} h ${t('de aviso', 'notice')})` : ''}`).join(' · ');
     return html`<div className="viaticos-aparte"><h3>${t('Viáticos · aparte', 'Travel expenses · separate')}</h3>
-      ${v.total ? html`<dl>${v.lineas.map(l => html`<${React.Fragment} key=${l.nombre}><dt>${l.nombre} (${t('operador', 'operator')})</dt><dd>${mxn(l.importe)}</dd><//>`)}</dl>` : null}
-      <p>${t('La renta no incluye viáticos (alimentos, hospedaje y transporte fuera de la zona local). Se calculan por separado y no se suman al total.', 'Rental does not include travel expenses (meals, lodging and transport outside the local area). They are calculated separately and are not added to the total.')}</p>
+      <p>${t('La renta no incluye viáticos. Se cobran aparte por persona que viaja (el operador de cámara, si lo hay), según destino:', 'Rental does not include travel expenses. They are charged separately per person traveling (the camera operator, if any), by destination:')} ${zonas}.</p>
     </div>`;
   }
 

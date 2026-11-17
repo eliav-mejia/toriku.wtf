@@ -395,3 +395,19 @@ body.cajon-abierto { overflow: hidden; }
 .viaticos-aparte dd { margin: 0; text-align: right; }
 .viaticos-aparte .total { color: var(--papel); font-weight: 600; }
 .viaticos-aparte p, .nota-viaticos { margin: 8px 0 0; font-size: 13px; color: var(--gris); }
+
+/* ── cotización simplificada (2026-11-17): preset visible + secciones en <details> cerradas */
+.preset { margin: 0 0 18px; font-size: 12px; letter-spacing: .06em; color: var(--ambar); }
+.desplegable { border: 1px solid var(--linea-2); margin: 0 0 14px; }
+.desplegable > summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 14px 16px; font: 500 12px var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--papel); }
+.desplegable > summary::-webkit-details-marker { display: none; }
+.desplegable > summary::after { content: '+'; font-size: 18px; line-height: 1; color: var(--rojo); }
+.desplegable[open] > summary::after { content: '−'; }
+.desplegable > summary:hover, .desplegable > summary:focus-visible { background: var(--negro-2); outline: none; }
+.desplegable > summary span { margin-right: auto; color: var(--rojo); }
+.desplegable[open] { border-color: var(--papel-2); }
+.desplegable > :not(summary) { margin-left: 16px; margin-right: 16px; }
+.desplegable > :last-child { margin-bottom: 16px; }
+.desplegable .casilla-foro { margin-bottom: 16px; }
+.cotizador .campo select, .cotizador .campo input[type=date] { height: 48px; }
+.cotizador #viaticos-nota { margin: -10px 0 8px; }

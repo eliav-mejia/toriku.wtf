@@ -3,8 +3,10 @@
    Precios de MUESTRA en MXN antes de IVA, ajustados a mercado competitivo de CDMX (2.0.0, 2026-11-15):
    el servicio se arma por jornada según camarógrafos, staff, edición y equipo rentado. El foro es solo una casilla opcional. */
 window.TORIKU_CATALOGO = (() => {
+  // Cotización simplificada (2.4.0, 2026-11-17): todo proyecto arranca con 1 jornada, 1 camarógrafo/operador, 1 iluminador y 1 día de edición.
+  const PRESET = { jornadas: 1, edicion: 1, equipo: { camara: 1, iluminador: 1 } };
   const C = {
-    version: '2.3.0',
+    version: '2.4.0',
     muestra: true,
     moneda: 'MXN',
     iva: 0.16,
@@ -33,17 +35,17 @@ window.TORIKU_CATALOGO = (() => {
     // Disciplinas de la portada. «paquete» = punto de partida del cotizador; «desde» se calcula con él.
     disciplinas: [
       { id: 'cortometraje', nombre: 'Cortometraje',        preproduccion: 3500, texto: 'Ficción y documental corto con crew de la red: guion, rodaje y edición, en tu locación o a distancia.',
-        paquete: { jornadas: 2, edicion: 3, equipo: { camara: 1, asistente: 1, iluminador: 1, sonido: 1 } } },
+        paquete: PRESET },
       { id: 'videoclip',    nombre: 'Videoclip',           preproduccion: 2500, texto: 'Videos musicales y sesiones en vivo, con estabilizador, luz y edición al ritmo.',
-        paquete: { jornadas: 1, edicion: 2, equipo: { camara: 1, asistente: 1, iluminador: 1 } } },
+        paquete: PRESET },
       { id: 'publicidad',   nombre: 'Publicidad y redes',  preproduccion: 2500, texto: 'Campañas y piezas cortas para redes, impreso y pantalla, con casting y maquillaje coordinados.',
-        paquete: { jornadas: 1, edicion: 1, equipo: { camara: 1, asistente: 1, maquillaje: 1 } } },
+        paquete: PRESET },
       { id: 'producto',     nombre: 'Foto de producto',    preproduccion: 800,  texto: 'Fondo blanco para e-commerce y bodegón editorial. Entrega lista para tienda en línea.',
-        paquete: { jornadas: 1, edicion: 1, equipo: { camara: 1, asistente: 1 } } },
+        paquete: PRESET },
       { id: 'moda',         nombre: 'Moda y beauty',       preproduccion: 1500, texto: 'Lookbooks, beauty y editoriales con estilismo, maquillaje y retoque de piel.',
-        paquete: { jornadas: 1, edicion: 1, equipo: { camara: 1, asistente: 1, maquillaje: 1, estilismo: 1 } } },
+        paquete: PRESET },
       { id: 'retrato',      nombre: 'Retrato',             preproduccion: 600,  texto: 'Perfiles de creador, equipos y marcas personales, con una luz consistente.',
-        paquete: { jornadas: 1, edicion: 1, equipo: { camara: 1 } } }
+        paquete: PRESET }
     ],
 
     extras: [
@@ -73,9 +75,16 @@ window.TORIKU_CATALOGO = (() => {
     ],
     operador: { sku: 'TK-E-OPER', nombre: 'Operador de cámara', precio: 1800 },
 
-    // Viáticos (2.2.0, 2026-11-16): NO van incluidos en la renta de equipo ni en el total del servicio; se calculan por separado.
-    // Muestra: alimentos por persona y día de trabajo, hospedaje por persona y noche, transporte foráneo por km (ida y vuelta).
-    viaticos: { alimentos: 350, hospedaje: 1200, km: 8 }
+    // Viáticos (2.4.0, 2026-11-17): NO van incluidos en la renta de equipo ni en el total del servicio; se calculan por separado.
+    // Se eligen por destino, precio por persona que viaja. Fuera de México = estándar que se ajusta y requiere 72 h de aviso.
+    viaticos: {
+      zonas: [
+        { id: 'cdmx',       nombre: 'Ciudad de México',              precio: 0 },
+        { id: 'cerca',      nombre: 'Cerca de la Ciudad de México',  precio: 800 },
+        { id: 'aereo',      nombre: 'México, por avión',             precio: 2500 },
+        { id: 'extranjero', nombre: 'Fuera de México (por ajustar)', precio: 10000, avisoHoras: 72 }
+      ]
+    }
   };
 
   // English (2.3.0, 2026-11-16): pages with <html lang="en"> get the same catalog with English names. Prices and SKUs do not change.
@@ -107,10 +116,12 @@ window.TORIKU_CATALOGO = (() => {
     const EN_NOMBRE = { metz: 'Metz lighting', ciclorama: 'Portable cyclorama', telas: 'Fabrics and backdrops', 'tripie-video': 'Video tripod', 'tripie-foto': 'Photo tripod', 'dji-mic': 'DJI wireless microphone', 'dji-gimbal': 'DJI gimbal' };
     C.equipo.forEach(e => { e.detalle = E[e.id] || e.detalle; if (EN_NOMBRE[e.id]) e.nombre = EN_NOMBRE[e.id]; });
     n(C.operador, 'Camera operator');
+    const ZN = { cdmx: 'Mexico City', cerca: 'Near Mexico City', aereo: 'Mexico, by air', extranjero: 'Outside Mexico (to be adjusted)' };
+    C.viaticos.zonas.forEach(z => n(z, ZN[z.id]));
   }
   const L = EN
-    ? { pre: 'Pre-production', jorn: 'day(s)', dias: 'days', alim: 'Meals', pd: 'person-days', hosp: 'Lodging', pers: 'people', noches: 'nights', trans: 'Out-of-town transport' }
-    : { pre: 'Preproducción', jorn: 'jorn.', dias: 'días', alim: 'Alimentos', pd: 'persona-día', hosp: 'Hospedaje', pers: 'pers.', noches: 'noches', trans: 'Transporte foráneo' };
+    ? { pre: 'Pre-production', jorn: 'day(s)', dia: 'day', dias: 'days', pers: 'people', precioPer: 'per person' }
+    : { pre: 'Preproducción', jorn: 'jorn.', dia: 'día', dias: 'días', pers: 'pers.', precioPer: 'por persona' };
   C.en = EN;
 
   const rol = id => C.roles.find(r => r.id === id);
@@ -124,7 +135,7 @@ window.TORIKU_CATALOGO = (() => {
       const r = rol(id); if (r && n > 0) lineas.push({ nombre: `${r.nombre} × ${n} · ${j} ${L.jorn}`, importe: r.precio * n * j });
     }
     if (sitio) lineas.push({ nombre: `${C.traslado.nombre} · ${j} ${L.jorn}`, importe: C.traslado.precio * j });
-    if (s.edicion > 0) lineas.push({ nombre: `${C.edicion.nombre} · ${s.edicion} ${L.dias}`, importe: C.edicion.precio * s.edicion });
+    if (s.edicion > 0) lineas.push({ nombre: `${C.edicion.nombre} · ${s.edicion} ${s.edicion === 1 ? L.dia : L.dias}`, importe: C.edicion.precio * s.edicion });
     if (s.foro) lineas.push({ nombre: `${C.foro.nombre} · ${j} ${L.jorn}`, importe: C.foro.precio * j });
     for (const sku of s.extras || []) { const x = C.extras.find(e => e.sku === sku); if (x) lineas.push({ nombre: x.nombre, importe: x.precio }); }
     return { lineas, subtotal: lineas.reduce((n, l) => n + l.importe, 0) };
@@ -143,13 +154,11 @@ window.TORIKU_CATALOGO = (() => {
     return { dias, lineas, operador, subtotal, piezas: lineas.reduce((n, l) => n + l.cantidad, 0) };
   };
 
-  // Viáticos, aparte: { personasDia: personas × días de trabajo, personas, noches, km }. Nunca suman al subtotal ni al anticipo.
+  // Viáticos, aparte: { personas, zona }. Precio por persona según destino. Nunca suman al subtotal ni al anticipo.
   C.cotizarViaticos = v => {
-    const V = C.viaticos, pd = Math.max(0, v.personasDia | 0), per = Math.max(0, v.personas | 0), no = Math.max(0, v.noches | 0), km = Math.max(0, v.km | 0), lineas = [];
-    if (pd) lineas.push({ nombre: `${L.alim} · ${pd} ${L.pd}`, importe: V.alimentos * pd });
-    if (per && no) lineas.push({ nombre: `${L.hosp} · ${per} ${L.pers} × ${no} ${L.noches}`, importe: V.hospedaje * per * no });
-    if (km) lineas.push({ nombre: `${L.trans} · ${km} km`, importe: V.km * km });
-    return { lineas, total: lineas.reduce((n, l) => n + l.importe, 0) };
+    const z = C.viaticos.zonas.find(x => x.id === v.zona) || C.viaticos.zonas[0], per = Math.max(0, v.personas | 0);
+    const lineas = per ? [{ nombre: `${z.nombre} · ${per} ${L.pers}`, importe: z.precio * per }] : [];
+    return { zona: z, lineas, total: z.precio * per };
   };
 
   C.desde = id => {

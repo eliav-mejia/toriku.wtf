@@ -2,6 +2,8 @@
    El servicio se arma por jornada: camarógrafos + staff de la red + traslado (solo en sitio) + días de edición.
    El foro es una casilla opcional. El equipo rentado sale de la bolsa (assets/js/bolsa.js), que la app de React
    llena en /renta/ y en el cajón de la cabecera; cualquier cambio en la bolsa se refleja aquí al momento.
+   2026-11-17: cotización simplificada. Arranca con el PRESET del catálogo (1 jornada, 1 camarógrafo, 1 iluminador, 1 día de edición);
+   ajustes, equipo rentado y foro/extras viven en <details> cerrados. Viáticos = destino en un <select> (precio por persona).
    Precios: data/catalogo.js (LEDGER). La solicitud se envía por correo; el enlace de pago del anticipo se manda con la confirmación. */
 (() => {
   'use strict';
@@ -19,6 +21,7 @@
   $('#roles').innerHTML = CAT.roles.map(r => `<label><span>${esc(r.nombre)}<small>${mxn(r.precio)} ${t('por jornada', 'per shoot day')}</small></span>
     <input type="number" name="rol-${r.id}" data-rol="${r.id}" min="0" max="${r.id === 'camara' ? 6 : 10}" value="0" aria-label="${esc(r.nombre)}, ${t('personas', 'people')}"></label>`).join('');
   $('#extras').innerHTML = CAT.extras.map(x => `<label><input type="checkbox" name="extra" value="${x.sku}"><span>${esc(x.nombre)}</span><small>${mxn(x.precio)}</small></label>`).join('');
+  $('#zona').innerHTML = CAT.viaticos.zonas.map(z => `<option value="${z.id}">${esc(z.nombre)} · ${z.precio ? mxn(z.precio) + ' ' + t('por persona', 'per person') : t('sin costo', 'no cost')}${z.avisoHoras ? ' · ' + t(`aviso de ${z.avisoHoras} h`, `${z.avisoHoras} h notice`) : ''}</option>`).join('');
   $('#foro-precio').textContent = `${mxn(CAT.foro.precio)} ${t('por jornada · opcional, la mayoría de proyectos se filman en locación', 'per shoot day · optional, most projects shoot on location')}`;
 
   // paquete de la disciplina → valores iniciales
@@ -29,13 +32,16 @@
   }
   const tipo = new URLSearchParams(location.search).get('tipo');
   if (CAT.disciplinas.some(d => d.id === tipo)) $('#servicio').value = tipo;
-  aplicarPaquete($('#servicio').value);
-  $('#servicio').addEventListener('change', e => aplicarPaquete(e.target.value));
+  aplicarPaquete($('#servicio').value);   // solo al cargar: cambiar de proyecto no borra lo que ajustaste
+  if (location.hash === '#equipo') $('#equipo').open = true;   // viene de «Agregar a mi cotización» en la bolsa
 
   // fecha mínima: mañana, en hora de Ciudad de México
   const hoy = new Intl.DateTimeFormat('en-CA', { timeZone: AG.zona || 'America/Mexico_City' }).format(new Date());
   const man = new Date(hoy + 'T12:00:00Z'); man.setUTCDate(man.getUTCDate() + 1);
-  $('#fecha').min = man.toISOString().slice(0, 10);
+  const MIN = man.toISOString().slice(0, 10);
+  $('#fecha').min = MIN;
+  // Fuera de México: la fecha más próxima es dentro de 72 h (avisoHoras).
+  const minAviso = h => { const d = new Date(hoy + 'T12:00:00Z'); d.setUTCDate(d.getUTCDate() + Math.ceil(h / 24)); return d.toISOString().slice(0, 10); };
 
   const num = (sel, min, max) => Math.max(min, Math.min(max, parseInt($(sel).value, 10) || 0));
   function calc() {
@@ -50,7 +56,7 @@
     const sub = sv.subtotal + eq.subtotal, iva = Math.round(sub * CAT.iva), total = sub + iva, ant = Math.round(total * CAT.anticipo);
     // Viáticos aparte: crew en sitio por jornada + operadores de cámara por día de renta. No suman al total ni al anticipo.
     const crew = sel.modalidad === 'distancia' ? 0 : Object.values(equipo).reduce((n, x) => n + x, 0), ops = eq.operador ? eq.operador.cantidad : 0;
-    const via = CAT.cotizarViaticos({ personasDia: crew * sel.jornadas + ops * eq.dias, personas: crew + ops, noches: num('#noches', 0, 30), km: num('#km', 0, 5000) });
+    const via = CAT.cotizarViaticos({ personas: crew + ops, zona: $('#zona').value });
     return { sel, sv, eq, sub, iva, total, ant, saldo: total - ant, via, personas: crew + ops };
   }
 
@@ -68,16 +74,29 @@
     const oc = $('#ocupada');
     oc.textContent = ocupada ? t('El foro está ocupado ese día: elige otra fecha o te proponemos una.', 'The studio is booked that day: pick another date or we will suggest one.') : '';
     pintaEquipo(c.eq);
+    // resumen del preset / de lo ajustado, visible aunque los desplegables estén cerrados
+    const partes = [`${c.sel.jornadas} ${c.sel.jornadas === 1 ? t('jornada', 'shoot day') : t('jornadas', 'shoot days')}`,
+      ...CAT.roles.filter(r => c.sel.equipo[r.id] > 0).map(r => `${c.sel.equipo[r.id]} ${r.nombre.toLowerCase()}`),
+      `${c.sel.edicion} ${c.sel.edicion === 1 ? t('día de edición', 'editing day') : t('días de edición', 'editing days')}`,
+      c.sel.modalidad === 'distancia' ? t('a distancia', 'remote') : null].filter(Boolean);
+    $('#preset').textContent = `${t('Incluye', 'Includes')}: ${partes.join(' · ')}`;
+    $('#equipo-cuenta').textContent = c.eq.piezas ? `· ${c.eq.piezas}` : '';
+    // 72 h de aviso fuera de México
+    const z = c.via.zona, fe = $('#fecha'), minimo = z.avisoHoras ? minAviso(z.avisoHoras) : MIN;
+    fe.min = minimo;
+    fe.setCustomValidity(fe.value && fe.value < minimo ? t(`Fuera de México necesitamos ${z.avisoHoras} h de aviso: elige ${minimo} o después.`, `Outside Mexico we need ${z.avisoHoras} hours' notice: choose ${minimo} or later.`) : '');
     $('#resumen').innerHTML = c.sv.lineas.map(l => `<dt>${esc(l.nombre)}</dt><dd>${mxn(l.importe)}</dd>`).join('') +
       (c.eq.piezas ? `<dt class="grupo">${t('Equipo rentado', 'Rented gear')} · ${c.eq.dias} d</dt><dd class="grupo">${mxn(c.eq.subtotal - (c.eq.operador ? c.eq.operador.importe : 0))}</dd>` : '') +
       (c.eq.operador ? `<dt>${esc(c.eq.operador.nombre)} × ${c.eq.operador.cantidad} (${t('aparte', 'separate')})</dt><dd>${mxn(c.eq.operador.importe)}</dd>` : '') +
       `<dt>Subtotal</dt><dd>${mxn(c.sub)}</dd><dt>${t('IVA', 'VAT')} ${Math.round(CAT.iva * 100)} %</dt><dd>${mxn(c.iva)}</dd>` +
       `<dt class="total">${t('Total estimado', 'Estimated total')}</dt><dd class="total">${mxn(c.total)}</dd>` +
       `<dt>${t('Anticipo', 'Deposit')} ${Math.round(CAT.anticipo * 100)} % ${t('para apartar', 'to book')}</dt><dd>${mxn(c.ant)}</dd><dt>${t('Saldo a la entrega', 'Balance on delivery')}</dt><dd>${mxn(c.saldo)}</dd>`;
-    $('#viaticos-nota').textContent = EN ? `${c.personas} person(s) on site · meals ${mxn(CAT.viaticos.alimentos)} per person per day · lodging ${mxn(CAT.viaticos.hospedaje)} per person per night · transport ${mxn(CAT.viaticos.km)} per km.`
-       : `${c.personas} persona(s) en sitio · alimentos ${mxn(CAT.viaticos.alimentos)} por persona y día · hospedaje ${mxn(CAT.viaticos.hospedaje)} por persona y noche · transporte ${mxn(CAT.viaticos.km)} por km.`;
+    $('#viaticos-nota').textContent = (z.precio
+        ? t(`${c.personas} persona(s) viajan × ${mxn(z.precio)} = ${mxn(c.via.total)}, aparte del total.`, `${c.personas} person(s) travel × ${mxn(z.precio)} = ${mxn(c.via.total)}, separate from the total.`)
+        : t('Sin viáticos en la Ciudad de México.', 'No travel expenses in Mexico City.'))
+      + (z.avisoHoras ? ' ' + t(`Estándar que se ajusta al destino; requiere ${z.avisoHoras} h de aviso.`, `Standard estimate adjusted to the destination; requires ${z.avisoHoras} hours' notice.`) : '');
     $('#resumen-viaticos').innerHTML = `<h3>${t('Viáticos · aparte', 'Travel expenses · separate')}</h3>` +
-      (c.via.lineas.length ? `<dl>${c.via.lineas.map(l => `<dt>${esc(l.nombre)}</dt><dd>${mxn(l.importe)}</dd>`).join('')}<dt class="total">${t('Viáticos estimados', 'Estimated travel expenses')}</dt><dd class="total">${mxn(c.via.total)}</dd></dl>` : '') +
+      (c.via.lineas.length ? `<dl>${c.via.lineas.map(l => `<dt>${esc(l.nombre)}</dt><dd>${l.importe ? mxn(l.importe) : t('Sin costo', 'No cost')}</dd>`).join('')}</dl>` : '') +
       `<p>${t('La renta de equipo y el servicio no incluyen viáticos. Se calculan por separado: no suman al total ni al anticipo.', 'Gear rental and the service do not include travel expenses. They are calculated separately: not added to the total or the deposit.')}</p>`;
     $('#enviar').textContent = t('Enviar cotización', 'Send quote');
     $('#nota').textContent = t('No necesitas cuenta para cotizar. Te enviamos la confirmación y el enlace de pago del anticipo por correo.', 'No account needed to get a quote. We email you the confirmation and the deposit payment link.');
@@ -99,7 +118,7 @@
       ...(c.eq.piezas ? ['', `${t('Equipo rentado', 'Rented gear')} (${c.eq.dias} ${t('días', 'days')}):`, ...c.eq.lineas.map(l => `  ${l.nombre} × ${l.cantidad}: ${mxn(l.importe)}`)] : []),
       ...(c.eq.operador ? [`  ${c.eq.operador.nombre} × ${c.eq.operador.cantidad} (${t('aparte', 'separate')}): ${mxn(c.eq.operador.importe)}`] : []), '',
       `${t('Total estimado', 'Estimated total')}: ${mxn(c.total)} (${t('IVA incluido', 'VAT included')}) · ${t('Anticipo', 'Deposit')}: ${mxn(c.ant)} · ${t('Saldo', 'Balance')}: ${mxn(c.saldo)}`, '',
-      t('Viáticos (aparte, no incluidos en el total):', 'Travel expenses (separate, not included in the total):'), ...(c.via.lineas.length ? c.via.lineas.map(l => `  ${l.nombre}: ${mxn(l.importe)}`).concat(`  ${t('Viáticos estimados', 'Estimated travel expenses')}: ${mxn(c.via.total)}`) : [t('  Por calcular', '  To be calculated')]), '',
+      t('Viáticos (aparte, no incluidos en el total):', 'Travel expenses (separate, not included in the total):'), ...(c.via.lineas.length ? c.via.lineas.map(l => `  ${l.nombre}: ${l.importe ? mxn(l.importe) : t('sin costo', 'no cost')}`) : [`  ${c.via.zona.nombre}`]), '',
       `${t('Nombre', 'Name')}: ${d.nombre}`, `${t('Empresa', 'Company')}: ${d.empresa || '—'}`, `${t('Correo', 'Email')}: ${d.correo}`, '', d.notas || ''].join('\n');
     location.href = `mailto:${CAT.correo}?subject=${encodeURIComponent(t('Cotización Toriku · ', 'Toriku quote · ') + disc.nombre + ' · ' + d.fecha)}&body=${encodeURIComponent(cuerpo)}`;
     setTimeout(() => { location.href = '../gracias/?solicitud=1'; }, 800);
