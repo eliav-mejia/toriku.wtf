@@ -4,7 +4,7 @@
    el servicio se arma por jornada según camarógrafos, staff, edición y equipo rentado. El foro es solo una casilla opcional. */
 window.TORIKU_CATALOGO = (() => {
   const C = {
-    version: '2.2.0',
+    version: '2.3.0',
     muestra: true,
     moneda: 'MXN',
     iva: 0.16,
@@ -78,19 +78,54 @@ window.TORIKU_CATALOGO = (() => {
     viaticos: { alimentos: 350, hospedaje: 1200, km: 8 }
   };
 
+  // English (2.3.0, 2026-11-16): pages with <html lang="en"> get the same catalog with English names. Prices and SKUs do not change.
+  const EN = (document.documentElement.lang || '').toLowerCase().startsWith('en');
+  if (EN) {
+    const n = (o, nombre, texto) => { o.nombre = nombre; if (texto) o.texto = texto; };
+    n(C.traslado, 'Gear transport (local area)');
+    const R = { camara: 'Camera operator / photographer', asistente: 'Production assistant', iluminador: 'Gaffer', sonido: 'Sound recordist', maquillaje: 'Hair and makeup', estilismo: 'Styling' };
+    C.roles.forEach(r => n(r, R[r.id]));
+    n(C.edicion, 'Editing and color (remote)');
+    n(C.foro, 'Studio with cyclorama');
+    const D = {
+      cortometraje: ['Short film', 'Fiction and short documentary with a crew from the network: script, shoot and edit, on your location or remotely.'],
+      videoclip: ['Music video', 'Music videos and live sessions, with gimbal, lighting and editing on the beat.'],
+      publicidad: ['Ads and social', 'Campaigns and short pieces for social, print and screen, with casting and makeup coordinated.'],
+      producto: ['Product photography', 'White background for e-commerce and editorial still life. Delivered ready for your online store.'],
+      moda: ['Fashion and beauty', 'Lookbooks, beauty and editorials with styling, makeup and skin retouching.'],
+      retrato: ['Portrait', 'Creator profiles, teams and personal brands, with consistent lighting.']
+    };
+    C.disciplinas.forEach(d => n(d, ...D[d.id]));
+    const X = { 'TK-X-GUION': 'Script and storyboard (remote)', 'TK-X-SUBT': 'Spanish / English subtitles', 'TK-X-MUSIC': 'Licensed library music', 'TK-X-CATER': 'Catering for 10 people' };
+    C.extras.forEach(x => n(x, X[x.sku]));
+    const E = {
+      'sony-a7rii': 'Full-frame body + 24-70 mm lens, 2 batteries', metz: 'Metz flash with trigger and softbox', ciclorama: '3 × 3 m infinity backdrop with frame',
+      telas: 'Set of muslins: black, white and chroma', 'lente-fe50': 'E-mount · fast prime for portrait and video', 'lente-fe85': 'E-mount · short tele for portrait and beauty',
+      'lente-a70200': 'A-mount · with LA-EA4 adapter for E-mount', 'sony-a6400': 'APS-C digital camera + kit lens, 2 batteries', 'canon-t7': 'Body + 18-55 mm lens, spare battery',
+      'tripie-video': 'Fluid head, up to 8 kg', 'tripie-foto': 'Aluminum, ball head', 'dji-mic': '2 transmitters + receiver', 'dji-gimbal': '3-axis gimbal for mirrorless cameras'
+    };
+    const EN_NOMBRE = { metz: 'Metz lighting', ciclorama: 'Portable cyclorama', telas: 'Fabrics and backdrops', 'tripie-video': 'Video tripod', 'tripie-foto': 'Photo tripod', 'dji-mic': 'DJI wireless microphone', 'dji-gimbal': 'DJI gimbal' };
+    C.equipo.forEach(e => { e.detalle = E[e.id] || e.detalle; if (EN_NOMBRE[e.id]) e.nombre = EN_NOMBRE[e.id]; });
+    n(C.operador, 'Camera operator');
+  }
+  const L = EN
+    ? { pre: 'Pre-production', jorn: 'day(s)', dias: 'days', alim: 'Meals', pd: 'person-days', hosp: 'Lodging', pers: 'people', noches: 'nights', trans: 'Out-of-town transport' }
+    : { pre: 'Preproducción', jorn: 'jorn.', dias: 'días', alim: 'Alimentos', pd: 'persona-día', hosp: 'Hospedaje', pers: 'pers.', noches: 'noches', trans: 'Transporte foráneo' };
+  C.en = EN;
+
   const rol = id => C.roles.find(r => r.id === id);
 
   // Servicio: { disciplina, modalidad: 'sitio'|'distancia', jornadas, edicion, equipo: {rol: n}, foro: bool, extras: [sku] }
   C.cotizarServicio = s => {
     const d = C.disciplinas.find(x => x.id === s.disciplina) || C.disciplinas[0];
     const j = Math.max(1, s.jornadas | 0), sitio = s.modalidad !== 'distancia', lineas = [];
-    lineas.push({ nombre: `Preproducción · ${d.nombre}`, importe: d.preproduccion });
+    lineas.push({ nombre: `${L.pre} · ${d.nombre}`, importe: d.preproduccion });
     for (const [id, n] of Object.entries(s.equipo || {})) {
-      const r = rol(id); if (r && n > 0) lineas.push({ nombre: `${r.nombre} × ${n} · ${j} jorn.`, importe: r.precio * n * j });
+      const r = rol(id); if (r && n > 0) lineas.push({ nombre: `${r.nombre} × ${n} · ${j} ${L.jorn}`, importe: r.precio * n * j });
     }
-    if (sitio) lineas.push({ nombre: `${C.traslado.nombre} · ${j} jorn.`, importe: C.traslado.precio * j });
-    if (s.edicion > 0) lineas.push({ nombre: `${C.edicion.nombre} · ${s.edicion} días`, importe: C.edicion.precio * s.edicion });
-    if (s.foro) lineas.push({ nombre: `${C.foro.nombre} · ${j} jorn.`, importe: C.foro.precio * j });
+    if (sitio) lineas.push({ nombre: `${C.traslado.nombre} · ${j} ${L.jorn}`, importe: C.traslado.precio * j });
+    if (s.edicion > 0) lineas.push({ nombre: `${C.edicion.nombre} · ${s.edicion} ${L.dias}`, importe: C.edicion.precio * s.edicion });
+    if (s.foro) lineas.push({ nombre: `${C.foro.nombre} · ${j} ${L.jorn}`, importe: C.foro.precio * j });
     for (const sku of s.extras || []) { const x = C.extras.find(e => e.sku === sku); if (x) lineas.push({ nombre: x.nombre, importe: x.precio }); }
     return { lineas, subtotal: lineas.reduce((n, l) => n + l.importe, 0) };
   };
@@ -111,9 +146,9 @@ window.TORIKU_CATALOGO = (() => {
   // Viáticos, aparte: { personasDia: personas × días de trabajo, personas, noches, km }. Nunca suman al subtotal ni al anticipo.
   C.cotizarViaticos = v => {
     const V = C.viaticos, pd = Math.max(0, v.personasDia | 0), per = Math.max(0, v.personas | 0), no = Math.max(0, v.noches | 0), km = Math.max(0, v.km | 0), lineas = [];
-    if (pd) lineas.push({ nombre: `Alimentos · ${pd} persona-día`, importe: V.alimentos * pd });
-    if (per && no) lineas.push({ nombre: `Hospedaje · ${per} pers. × ${no} noches`, importe: V.hospedaje * per * no });
-    if (km) lineas.push({ nombre: `Transporte foráneo · ${km} km`, importe: V.km * km });
+    if (pd) lineas.push({ nombre: `${L.alim} · ${pd} ${L.pd}`, importe: V.alimentos * pd });
+    if (per && no) lineas.push({ nombre: `${L.hosp} · ${per} ${L.pers} × ${no} ${L.noches}`, importe: V.hospedaje * per * no });
+    if (km) lineas.push({ nombre: `${L.trans} · ${km} km`, importe: V.km * km });
     return { lineas, total: lineas.reduce((n, l) => n + l.importe, 0) };
   };
 

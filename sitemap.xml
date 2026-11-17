@@ -2,10 +2,10 @@
 <!-- BEACON · toriku.wtf · actualizar lastmod en cada versión publicada. /gracias/ y 404 quedan fuera (noindex / robots). -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://toriku.wtf/</loc><lastmod>2026-11-15</lastmod><changefreq>monthly</changefreq><priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="es-MX" href="https://toriku.wtf/"/><xhtml:link rel="alternate" hreflang="en-US" href="https://toriku.wtf/en/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://toriku.wtf/"/>
-    <image:image><image:loc>https://toriku.wtf/assets/img/portafolio_stock/heroe.jpg</image:loc></image:image>
-    <image:image><image:loc>https://toriku.wtf/assets/img/heroe-portada.jpg</image:loc></image:image><!-- Portada del héroe -->
+    <loc>https://toriku.wtf/</loc><lastmod>2026-11-16</lastmod><changefreq>monthly</changefreq><priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://toriku.wtf/"/><xhtml:link rel="alternate" hreflang="en-US" href="https://toriku.wtf/en/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://toriku.wtf/en/"/>
+    <image:image><image:loc>https://toriku.wtf/assets/img/Games/Control%20Resonant.jpg</image:loc></image:image><!-- Héroe · fondo -->
+    <image:image><image:loc>https://toriku.wtf/assets/img/Games/GTA%20VI.jpg</image:loc></image:image><!-- Héroe · póster -->
     <image:image><image:loc>https://toriku.wtf/assets/img/portafolio/evento-ferrari-amanali.jpg</image:loc></image:image><!-- Eventos · Torneo Italia Ferrari -->
     <image:image><image:loc>https://toriku.wtf/assets/img/portafolio/moda-beauty-01.jpg</image:loc></image:image><!-- Beauty · tratamiento facial -->
     <image:image><image:loc>https://toriku.wtf/assets/img/portafolio/moda-beauty-02.jpg</image:loc></image:image><!-- Beauty · sonrisa -->
@@ -14,13 +14,41 @@
     <image:image><image:loc>https://toriku.wtf/assets/img/portafolio/retrato-concreto.jpg</image:loc></image:image><!-- Retrato · concreto -->
   </url>
   <url>
-    <loc>https://toriku.wtf/en/</loc><lastmod>2026-11-15</lastmod><changefreq>monthly</changefreq><priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="es-MX" href="https://toriku.wtf/"/><xhtml:link rel="alternate" hreflang="en-US" href="https://toriku.wtf/en/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://toriku.wtf/"/>
+    <loc>https://toriku.wtf/en/</loc><lastmod>2026-11-16</lastmod><changefreq>monthly</changefreq><priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://toriku.wtf/"/><xhtml:link rel="alternate" hreflang="en-US" href="https://toriku.wtf/en/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://toriku.wtf/en/"/>
   </url>
-  <url><loc>https://toriku.wtf/renta/</loc><lastmod>2026-11-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://toriku.wtf/cotizar/</loc><lastmod>2026-11-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://toriku.wtf/legal/aviso-de-privacidad.html</loc><lastmod>2026-11-15</lastmod><changefreq>yearly</changefreq><priority>0.2</priority></url>
-  <url><loc>https://toriku.wtf/legal/terminos.html</loc><lastmod>2026-11-15</lastmod><changefreq>yearly</changefreq><priority>0.2</priority></url>
+  <url>
+    <loc>https://toriku.wtf/renta/</loc><lastmod>2026-11-16</lastmod><changefreq>monthly</changefreq><priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://toriku.wtf/renta/"/><xhtml:link rel="alternate" hreflang="en-US" href="https://toriku.wtf/en/renta/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://toriku.wtf/en/renta/"/>
+  </url>
+  <url>
+    <loc>https://toriku.wtf/en/renta/</loc><lastmod>2026-11-16</lastmod><changefreq>monthly</changefreq><priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://toriku.wtf/renta/"/><xhtml:link rel="alternate" hreflang="en-US" href="https://toriku.wtf/en/renta/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://toriku.wtf/en/renta/"/>
+  </url>
+  <url>
+    <loc>https://toriku.wtf/cotizar/</loc><lastmod>2026-11-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://toriku.wtf/cotizar/"/><xhtml:link rel="alternate" hreflang="en-US" href="https://toriku.wtf/en/cotizar/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://toriku.wtf/en/cotizar/"/>
+  </url>
+  <url>
+    <loc>https://toriku.wtf/en/cotizar/</loc><lastmod>2026-11-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://toriku.wtf/cotizar/"/><xhtml:link rel="alternate" hreflang="en-US" href="https://toriku.wtf/en/cotizar/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://toriku.wtf/en/cotizar/"/>
+  </url>
+  <url>
+    <loc>https://toriku.wtf/legal/aviso-de-privacidad.html</loc><lastmod>2026-11-16</lastmod><changefreq>yearly</changefreq><priority>0.2</priority>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://toriku.wtf/legal/aviso-de-privacidad.html"/><xhtml:link rel="alternate" hreflang="en-US" href="https://toriku.wtf/en/legal/privacy.html"/><xhtml:link rel="alternate" hreflang="x-default" href="https://toriku.wtf/en/legal/privacy.html"/>
+  </url>
+  <url>
+    <loc>https://toriku.wtf/en/legal/privacy.html</loc><lastmod>2026-11-16</lastmod><changefreq>yearly</changefreq><priority>0.2</priority>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://toriku.wtf/legal/aviso-de-privacidad.html"/><xhtml:link rel="alternate" hreflang="en-US" href="https://toriku.wtf/en/legal/privacy.html"/><xhtml:link rel="alternate" hreflang="x-default" href="https://toriku.wtf/en/legal/privacy.html"/>
+  </url>
+  <url>
+    <loc>https://toriku.wtf/legal/terminos.html</loc><lastmod>2026-11-16</lastmod><changefreq>yearly</changefreq><priority>0.2</priority>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://toriku.wtf/legal/terminos.html"/><xhtml:link rel="alternate" hreflang="en-US" href="https://toriku.wtf/en/legal/terms.html"/><xhtml:link rel="alternate" hreflang="x-default" href="https://toriku.wtf/en/legal/terms.html"/>
+  </url>
+  <url>
+    <loc>https://toriku.wtf/en/legal/terms.html</loc><lastmod>2026-11-16</lastmod><changefreq>yearly</changefreq><priority>0.2</priority>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://toriku.wtf/legal/terminos.html"/><xhtml:link rel="alternate" hreflang="en-US" href="https://toriku.wtf/en/legal/terms.html"/><xhtml:link rel="alternate" hreflang="x-default" href="https://toriku.wtf/en/legal/terms.html"/>
+  </url>
   <!-- blog:start -->
   <url><loc>https://toriku.wtf/blog/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://toriku.wtf/blog/ia-creativa-del-guion-al-storyboard/</loc><lastmod>2026-11-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>

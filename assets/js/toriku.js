@@ -4,7 +4,7 @@
   'use strict';
   const $ = (s, r = document) => r.querySelector(s);
   const CAT = window.TORIKU_CATALOGO, PF = window.TORIKU_PORTAFOLIO, CU = window.TorikuCuadros;
-  const mxn = n => new Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN', maximumFractionDigits: 0 }).format(n);
+  const mxn = n => new Intl.NumberFormat(document.documentElement.lang.startsWith('en') ? 'en-US' : 'es-MX', { style: 'currency', currency: 'MXN', maximumFractionDigits: 0 }).format(n);
   const B = document.documentElement.dataset.base || '';           // '../' en /en/
   const EN = document.documentElement.lang.startsWith('en');
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
@@ -44,7 +44,7 @@
     return `<article class="servicio" id="s-${d.id}">
       <span class="n mono">${String(i + 1).padStart(2, '0')} / ${String(DIS.length).padStart(2, '0')}</span>
       <h3>${esc(d.nombre)}</h3><p>${esc(d.texto)}</p>
-      <div class="desde"><span class="mono">${EN ? 'From' : 'Desde'} <b>${mxn(CAT.desde(d.id))}</b></span><a class="mono" href="${B}cotizar/?tipo=${d.id}">${EN ? 'Quote' : 'Cotizar'} →</a></div>
+      <div class="desde"><span class="mono">${EN ? 'From' : 'Desde'} <b>${mxn(CAT.desde(d.id))}</b></span><a class="mono" href="${B}${EN ? 'en/' : ''}cotizar/?tipo=${d.id}">${EN ? 'Quote' : 'Cotizar'} →</a></div>
     </article>`;
   }).join('');
 

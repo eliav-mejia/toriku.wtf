@@ -22,3 +22,19 @@ window.TORIKU_PORTAFOLIO = {
   // Fechas ocupadas del foro de socio (solo aplica si el cotizador marca la casilla de foro) (ISO, hora de Ciudad de México). Muestra fija; RELAY la sincroniza más adelante.
   agenda: { zona: 'America/Mexico_City', ocupadas: ['2026-11-10', '2026-11-11', '2026-11-14', '2026-11-19', '2026-11-20', '2026-11-21', '2026-11-27', '2026-12-02', '2026-12-03', '2026-12-09'] }
 };
+
+// English (2026-11-16): pages with <html lang="en"> show categories, titles and alt text in English.
+(() => {
+  const PF = window.TORIKU_PORTAFOLIO;
+  if (!(document.documentElement.lang || '').toLowerCase().startsWith('en')) return;
+  PF.categorias = { eventos: 'Events', moda: 'Fashion and beauty', producto: 'Product', retrato: 'Portrait' };
+  const T = {
+    e01: ['Italia Ferrari Tournament at Amanali Country Club', 'Video thumbnail of the Italia Ferrari Tournament at Amanali Country Club'],
+    m01: ['Beauty · facial treatment', 'Specialist applying a facial device to a woman lying on a treatment bed'],
+    m02: ['Beauty · smile', 'Smiling woman during a facial treatment with a device'],
+    m03: ['Beauty · device', 'White facial device on a pink notebook and synthetic skin'],
+    p11: ['Emulsion · still life', 'Pink cream tube on travertine stone with branch shadows'],
+    p05: ['Portrait · concrete', 'Front portrait of a man in a light blue shirt in a concrete hallway']
+  };
+  PF.proyectos.forEach(p => { if (T[p.id]) [p.titulo, p.alt] = T[p.id]; });
+})();

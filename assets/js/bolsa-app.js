@@ -11,9 +11,12 @@
   const html = htm.bind(React.createElement);
   const CAT = window.TORIKU_CATALOGO, B = window.TorikuBolsa, CU = window.TorikuCuenta;
   if (!CAT || !B) return;
-  const mxn = n => new Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN', maximumFractionDigits: 0 }).format(n);
+  const EN = (document.documentElement.lang || '').toLowerCase().startsWith('en');
+  const t = (es, en) => EN ? en : es;           // textos ES / EN según <html lang>
+  const mxn = n => new Intl.NumberFormat(EN ? 'en-US' : 'es-MX', { style: 'currency', currency: 'MXN', maximumFractionDigits: 0 }).format(n);
   const raiz = document.getElementById('bolsa-raiz');
   const BASE = (raiz && raiz.dataset.base) || '';
+  const PAG = BASE + (EN ? 'en/' : '');            // páginas: /en/renta/, /en/cotizar/ en inglés
   const useBolsa = () => useSyncExternalStore(B.suscribir, B.get);
   const resumenDe = b => CAT.cotizarEquipo(b);
 
@@ -29,9 +32,9 @@
 
   function Contador({ valor, min = 0, max = 20, onCambio, etiqueta }) {
     return html`<div className="contador" role="group" aria-label=${etiqueta}>
-      <button type="button" aria-label="Quitar uno" disabled=${valor <= min} onClick=${() => onCambio(valor - 1)}>−</button>
+      <button type="button" aria-label=${t('Quitar uno', 'Remove one')} disabled=${valor <= min} onClick=${() => onCambio(valor - 1)}>−</button>
       <output aria-live="polite">${valor}</output>
-      <button type="button" aria-label="Agregar uno" disabled=${valor >= max} onClick=${() => onCambio(valor + 1)}>+</button>
+      <button type="button" aria-label=${t('Agregar uno', 'Add one')} disabled=${valor >= max} onClick=${() => onCambio(valor + 1)}>+</button>
     </div>`;
   }
 
@@ -39,9 +42,9 @@
     const iva = Math.round(r.subtotal * CAT.iva);
     return html`<dl className="bolsa-totales">
       ${r.lineas.map(l => html`<dt key=${l.id}>${l.nombre} × ${l.cantidad} · ${r.dias} d</dt><dd key=${l.id + 'i'}>${mxn(l.importe)}</dd>`)}
-      ${r.operador && html`<dt className="op">${r.operador.nombre} × ${r.operador.cantidad} · ${r.dias} d <small>obligatorio, se cotiza aparte</small></dt><dd className="op">${mxn(r.operador.importe)}</dd>`}
-      <dt className="total">Subtotal equipo</dt><dd className="total">${mxn(r.subtotal)}</dd>
-      <dt>Con IVA ${Math.round(CAT.iva * 100)} %</dt><dd>${mxn(r.subtotal + iva)}</dd>
+      ${r.operador && html`<dt className="op">${r.operador.nombre} × ${r.operador.cantidad} · ${r.dias} d <small>${t('obligatorio, se cotiza aparte', 'required, quoted separately')}</small></dt><dd className="op">${mxn(r.operador.importe)}</dd>`}
+      <dt className="total">${t('Subtotal equipo', 'Gear subtotal')}</dt><dd className="total">${mxn(r.subtotal)}</dd>
+      <dt>${t('Con IVA', 'With VAT')} ${Math.round(CAT.iva * 100)} %</dt><dd>${mxn(r.subtotal + iva)}</dd>
     </dl>
     <${Viaticos} r=${r} />`;
   }
@@ -49,9 +52,9 @@
   // La renta de equipo NO incluye viáticos: se calculan por separado y no suman al subtotal.
   function Viaticos({ r }) {
     const v = r.operador ? CAT.cotizarViaticos({ personasDia: r.operador.cantidad * r.dias }) : { lineas: [], total: 0 };
-    return html`<div className="viaticos-aparte"><h3>Viáticos · aparte</h3>
-      ${v.total ? html`<dl>${v.lineas.map(l => html`<${React.Fragment} key=${l.nombre}><dt>${l.nombre} (operador)</dt><dd>${mxn(l.importe)}</dd><//>`)}</dl>` : null}
-      <p>La renta no incluye viáticos (alimentos, hospedaje y transporte fuera de la zona local). Se calculan por separado y no se suman al total.</p>
+    return html`<div className="viaticos-aparte"><h3>${t('Viáticos · aparte', 'Travel expenses · separate')}</h3>
+      ${v.total ? html`<dl>${v.lineas.map(l => html`<${React.Fragment} key=${l.nombre}><dt>${l.nombre} (${t('operador', 'operator')})</dt><dd>${mxn(l.importe)}</dd><//>`)}</dl>` : null}
+      <p>${t('La renta no incluye viáticos (alimentos, hospedaje y transporte fuera de la zona local). Se calculan por separado y no se suman al total.', 'Rental does not include travel expenses (meals, lodging and transport outside the local area). They are calculated separately and are not added to the total.')}</p>
     </div>`;
   }
 
@@ -69,42 +72,43 @@
     const enCotizar = /\/cotizar\/?$/.test(location.pathname), enRenta = /\/renta\/?$/.test(location.pathname);
     return html`<${React.Fragment}>
       <button type="button" className="bolsa-boton" aria-haspopup="dialog" aria-expanded=${abierta} onClick=${() => setAbierta(true)}>
-        <span className="txt">Equipo</span><span className="cuenta-piezas" aria-label=${r.piezas + ' piezas'}>${r.piezas}</span>
+        <span className="txt">${t('Equipo', 'Gear')}</span><span className="cuenta-piezas" aria-label=${r.piezas + t(' piezas', ' items')}>${r.piezas}</span>
       </button>
       ${abierta && ReactDOM.createPortal(html`<${React.Fragment}><div className="velo" onClick=${() => setAbierta(false)}></div>
-      <aside className="cajon" role="dialog" aria-modal="true" aria-label="Bolsa de equipo rentado">
-        <header><h2>Tu equipo</h2><button type="button" className="cerrar" aria-label="Cerrar" onClick=${() => setAbierta(false)}>×</button></header>
+      <aside className="cajon" role="dialog" aria-modal="true" aria-label=${t('Bolsa de equipo rentado', 'Rented gear bag')}>
+        <header><h2>${t('Tu equipo', 'Your gear')}</h2><button type="button" className="cerrar" aria-label=${t('Cerrar', 'Close')} onClick=${() => setAbierta(false)}>×</button></header>
         ${r.piezas === 0
-          ? html`<p className="vacio">Tu bolsa está vacía. Agrega tripiés, luz, audio o cámaras con operador.</p>
-                 <a className="boton" href=${BASE + 'renta/'}>Ver equipo</a>`
+          ? html`<p className="vacio">${t('Tu bolsa está vacía. Agrega tripiés, luz, audio o cámaras con operador.', 'Your bag is empty. Add tripods, lights, audio or cameras with an operator.')}</p>
+                 <a className="boton" href=${PAG + 'renta/'}>${t('Ver equipo', 'See gear')}</a>`
           : html`<${React.Fragment}>
-            <div className="campo-dias"><span className="mono">Días de renta</span><${Contador} valor=${b.dias} min=${1} max=${30} etiqueta="Días de renta" onCambio=${B.dias} /></div>
+            <div className="campo-dias"><span className="mono">${t('Días de renta', 'Rental days')}</span><${Contador} valor=${b.dias} min=${1} max=${30} etiqueta=${t('Días de renta', 'Rental days')} onCambio=${B.dias} /></div>
             <ul className="bolsa-lista">
-              ${r.lineas.map(l => html`<li key=${l.id}><div><b>${l.nombre}</b><small>${mxn(l.unitario)} / día</small></div>
-                <${Contador} valor=${l.cantidad} etiqueta=${'Cantidad de ' + l.nombre} onCambio=${q => B.poner(l.id, q)} /></li>`)}
+              ${r.lineas.map(l => html`<li key=${l.id}><div><b>${l.nombre}</b><small>${mxn(l.unitario)} / ${t('día', 'day')}</small></div>
+                <${Contador} valor=${l.cantidad} etiqueta=${t('Cantidad de ', 'Quantity of ') + l.nombre} onCambio=${q => B.poner(l.id, q)} /></li>`)}
             </ul>
             <${Totales} r=${r} />
             <div className="cajon-acciones">
               ${enCotizar
-                ? html`<button type="button" className="boton" onClick=${() => setAbierta(false)}>Listo, ya está en tu cotización</button>`
-                : html`<a className="boton" href=${BASE + 'cotizar/#equipo'}>Agregar a mi cotización</a>`}
-              <a className="boton hueco" href=${BASE + 'renta/#rentar'} onClick=${() => enRenta && setAbierta(false)}>Rentar solo el equipo</a>
-              <button type="button" className="vaciar mono" onClick=${B.vaciar}>Vaciar bolsa</button>
+                ? html`<button type="button" className="boton" onClick=${() => setAbierta(false)}>${t('Listo, ya está en tu cotización', 'Done, it is in your quote')}</button>`
+                : html`<a className="boton" href=${PAG + 'cotizar/#equipo'}>${t('Agregar a mi cotización', 'Add to my quote')}</a>`}
+              <a className="boton hueco" href=${PAG + 'renta/#rentar'} onClick=${() => enRenta && setAbierta(false)}>${t('Rentar solo el equipo', 'Rent gear only')}</a>
+              <button type="button" className="vaciar mono" onClick=${B.vaciar}>${t('Vaciar bolsa', 'Empty bag')}</button>
             </div>
-            <p className="nota">Cotizar no requiere cuenta. Para rentar equipo sin servicio necesitas registrarte con tu correo.</p>
+            <p className="nota">${t('Cotizar no requiere cuenta. Para rentar equipo sin servicio necesitas registrarte con tu correo.', 'No account needed to get a quote. To rent gear without a service, sign up with your email.')}</p>
           <//>`}
       </aside><//>`, document.body)}
     <//>`;
   }
 
   // ── /renta/: catálogo
-  const TIPOS = [['todo', 'Todo'], ['camara', 'Cámaras'], ['lente', 'Lentes'], ['luz', 'Luz'], ['fondo', 'Fondos'], ['soporte', 'Soporte'], ['audio', 'Audio']];
+  const TIPOS = EN ? [['todo', 'All'], ['camara', 'Cameras'], ['lente', 'Lenses'], ['luz', 'Lights'], ['fondo', 'Backdrops'], ['soporte', 'Support'], ['audio', 'Audio']]
+                   : [['todo', 'Todo'], ['camara', 'Cámaras'], ['lente', 'Lentes'], ['luz', 'Luz'], ['fondo', 'Fondos'], ['soporte', 'Soporte'], ['audio', 'Audio']];
   function Catalogo() {
     const b = useBolsa();
     const [tipo, setTipo] = useState('todo');
     const lista = CAT.equipo.filter(e => tipo === 'todo' || e.tipo === tipo);
     return html`<${React.Fragment}>
-      <div className="filtros" role="group" aria-label="Filtrar equipo">
+      <div className="filtros" role="group" aria-label=${t('Filtrar equipo', 'Filter gear')}>
         ${TIPOS.map(([id, n]) => html`<button key=${id} type="button" aria-pressed=${tipo === id} onClick=${() => setTipo(id)}>${n}</button>`)}
       </div>
       <div className="equipo">
@@ -114,10 +118,10 @@
             ${e.img ? html`<img className="foto-equipo" src=${BASE + 'assets/img/equipo/' + e.img + '.svg'} alt="" width="160" height="100" loading="lazy" decoding="async" />`
                     : html`<div className="icono"><${Icono} tipo=${e.tipo} /></div>`}
             <h3>${e.nombre}</h3><p>${e.detalle}</p>
-            ${e.operador && html`<p className="etiqueta mono">Solo con operador · +${mxn(CAT.operador.precio)}/día aparte</p>`}
-            <div className="pie-equipo"><span className="mono"><b>${mxn(e.precio)}</b> / día</span>
-              ${q ? html`<${Contador} valor=${q} etiqueta=${'Cantidad de ' + e.nombre} onCambio=${n => B.poner(e.id, n)} />`
-                  : html`<button type="button" className="agregar mono" onClick=${() => { B.sumar(e.id, 1); window.torikuEvento && window.torikuEvento('add_to_cart', { item_id: e.sku }); }}>Agregar +</button>`}
+            ${e.operador && html`<p className="etiqueta mono">${t('Solo con operador', 'Operator only')} · +${mxn(CAT.operador.precio)}/${t('día aparte', 'day, separate')}</p>`}
+            <div className="pie-equipo"><span className="mono"><b>${mxn(e.precio)}</b> / ${t('día', 'day')}</span>
+              ${q ? html`<${Contador} valor=${q} etiqueta=${t('Cantidad de ', 'Quantity of ') + e.nombre} onCambio=${n => B.poner(e.id, n)} />`
+                  : html`<button type="button" className="agregar mono" onClick=${() => { B.sumar(e.id, 1); window.torikuEvento && window.torikuEvento('add_to_cart', { item_id: e.sku }); }}>${t('Agregar +', 'Add +')}</button>`}
             </div>
           </article>`;
         })}
@@ -129,23 +133,23 @@
   function Acceso() {
     const [modo, setModo] = useState('entrar'), [correo, setCorreo] = useState(''), [clave, setClave] = useState('');
     const [estado, setEstado] = useState(''), [ocupado, setOcupado] = useState(false);
-    if (!CU || !CU.activa) return html`<p className="aviso">El registro de cuentas aún no está activo en este sitio. Mientras tanto, agrega el equipo a una <a href="../cotizar/#equipo">cotización</a> (no requiere cuenta).</p>`;
+    if (!CU || !CU.activa) return html`<p className="aviso">${t('El registro de cuentas aún no está activo en este sitio. Mientras tanto, agrega el equipo a una ', 'Account sign-up is not active on this site yet. Meanwhile, add the gear to a ')}<a href="../cotizar/#equipo">${t('cotización', 'quote')}</a> ${t('(no requiere cuenta).', '(no account needed).')}</p>`;
     const enviar = async e => {
       e.preventDefault(); setOcupado(true); setEstado('');
       try {
-        if (modo === 'registro') { const r = await CU.registrar(correo, clave); setEstado(r.confirmar ? 'Te enviamos un correo para confirmar tu cuenta. Al confirmar vuelves aquí con tu bolsa intacta.' : ''); }
+        if (modo === 'registro') { const r = await CU.registrar(correo, clave); setEstado(r.confirmar ? t('Te enviamos un correo para confirmar tu cuenta. Al confirmar vuelves aquí con tu bolsa intacta.', 'We sent you an email to confirm your account. Once confirmed you come back here with your bag intact.') : ''); }
         else await CU.entrar(correo, clave);
       } catch (err) { setEstado(err.message); }
       setOcupado(false);
     };
     return html`<form className="acceso" onSubmit=${enviar}>
       <div className="pestanas" role="tablist">
-        <button type="button" role="tab" aria-selected=${modo === 'entrar'} onClick=${() => setModo('entrar')}>Entrar</button>
-        <button type="button" role="tab" aria-selected=${modo === 'registro'} onClick=${() => setModo('registro')}>Crear cuenta</button>
+        <button type="button" role="tab" aria-selected=${modo === 'entrar'} onClick=${() => setModo('entrar')}>${t('Entrar', 'Sign in')}</button>
+        <button type="button" role="tab" aria-selected=${modo === 'registro'} onClick=${() => setModo('registro')}>${t('Crear cuenta', 'Create account')}</button>
       </div>
-      <div className="campo"><label htmlFor="r-correo">Correo</label><input id="r-correo" type="email" autocomplete="email" required value=${correo} onInput=${e => setCorreo(e.target.value)} /></div>
-      <div className="campo"><label htmlFor="r-clave">Contraseña</label><input id="r-clave" type="password" minLength="8" autocomplete=${modo === 'registro' ? 'new-password' : 'current-password'} required value=${clave} onInput=${e => setClave(e.target.value)} /></div>
-      <button className="boton" type="submit" disabled=${ocupado}>${modo === 'registro' ? 'Crear cuenta con mi correo' : 'Entrar'}</button>
+      <div className="campo"><label htmlFor="r-correo">${t('Correo', 'Email')}</label><input id="r-correo" type="email" autocomplete="email" required value=${correo} onInput=${e => setCorreo(e.target.value)} /></div>
+      <div className="campo"><label htmlFor="r-clave">${t('Contraseña', 'Password')}</label><input id="r-clave" type="password" minLength="8" autocomplete=${modo === 'registro' ? 'new-password' : 'current-password'} required value=${clave} onInput=${e => setClave(e.target.value)} /></div>
+      <button className="boton" type="submit" disabled=${ocupado}>${modo === 'registro' ? t('Crear cuenta con mi correo', 'Create account with my email') : t('Entrar', 'Sign in')}</button>
       <p className="nota" aria-live="polite">${estado}</p>
     </form>`;
   }
@@ -155,11 +159,11 @@
     const sesion = useSyncExternalStore(CU ? CU.suscribir : () => () => {}, CU ? CU.sesion : () => null);
     const [fecha, setFecha] = useState(''), [notas, setNotas] = useState(''), [hecho, setHecho] = useState(false), [error, setError] = useState(''), [ocupado, setOcupado] = useState(false);
     const manana = (() => { const h = new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Mexico_City' }).format(new Date()); const d = new Date(h + 'T12:00:00Z'); d.setUTCDate(d.getUTCDate() + 1); return d.toISOString().slice(0, 10); })();
-    if (hecho) return html`<div className="aviso ok"><b>Solicitud enviada.</b> Te confirmamos disponibilidad y entrega por correo en menos de 24 horas hábiles.</div>`;
-    if (r.piezas === 0) return html`<p className="aviso">Agrega equipo arriba para rentarlo.</p>`;
-    if (!sesion) return html`<div className="rentar"><div><p className="intro-renta">Para rentar equipo necesitas una cuenta con tu correo. Tu bolsa se conserva.</p><${Acceso} /></div><div className="resumen"><h2>Tu renta</h2><${Totales} r=${r} /></div></div>`;
+    if (hecho) return html`<div className="aviso ok"><b>${t('Solicitud enviada.', 'Request sent.')}</b> ${t('Te confirmamos disponibilidad y entrega por correo en menos de 24 horas hábiles.', 'We will confirm availability and delivery by email within 24 business hours.')}</div>`;
+    if (r.piezas === 0) return html`<p className="aviso">${t('Agrega equipo arriba para rentarlo.', 'Add gear above to rent it.')}</p>`;
+    if (!sesion) return html`<div className="rentar"><div><p className="intro-renta">${t('Para rentar equipo necesitas una cuenta con tu correo. Tu bolsa se conserva.', 'To rent gear you need an account with your email. Your bag is kept.')}</p><${Acceso} /></div><div className="resumen"><h2>${t('Tu renta', 'Your rental')}</h2><${Totales} r=${r} /></div></div>`;
     const enviar = async e => {
-      e.preventDefault(); if (!fecha) { setError('Elige la fecha de entrega.'); return; }
+      e.preventDefault(); if (!fecha) { setError(t('Elige la fecha de entrega.', 'Choose the delivery date.')); return; }
       setOcupado(true); setError('');
       try {
         await CU.solicitarRenta({ correo: sesion.correo, fecha_inicio: fecha, dias: r.dias, operadores: r.operador ? r.operador.cantidad : 0,
@@ -172,16 +176,16 @@
     };
     return html`<form className="rentar" onSubmit=${enviar}>
       <div>
-        <p className="sesion mono">Sesión: ${sesion.correo || 'cuenta confirmada'} · <button type="button" className="enlace" onClick=${() => CU.salir()}>Salir</button></p>
+        <p className="sesion mono">${t('Sesión', 'Signed in')}: ${sesion.correo || t('cuenta confirmada', 'confirmed account')} · <button type="button" className="enlace" onClick=${() => CU.salir()}>${t('Salir', 'Sign out')}</button></p>
         <div className="dos">
-          <div className="campo"><label htmlFor="r-fecha">Fecha de entrega</label><input id="r-fecha" type="date" min=${manana} required value=${fecha} onInput=${e => setFecha(e.target.value)} /></div>
-          <div className="campo"><span className="etq mono">Días de renta</span><${Contador} valor=${b.dias} min=${1} max=${30} etiqueta="Días de renta" onCambio=${B.dias} /></div>
+          <div className="campo"><label htmlFor="r-fecha">${t('Fecha de entrega', 'Delivery date')}</label><input id="r-fecha" type="date" min=${manana} required value=${fecha} onInput=${e => setFecha(e.target.value)} /></div>
+          <div className="campo"><span className="etq mono">${t('Días de renta', 'Rental days')}</span><${Contador} valor=${b.dias} min=${1} max=${30} etiqueta=${t('Días de renta', 'Rental days')} onCambio=${B.dias} /></div>
         </div>
-        <div className="campo"><label htmlFor="r-notas">Notas (dirección de entrega, horario)</label><textarea id="r-notas" maxLength="2000" value=${notas} onInput=${e => setNotas(e.target.value)}></textarea></div>
+        <div className="campo"><label htmlFor="r-notas">${t('Notas (dirección de entrega, horario)', 'Notes (delivery address, time)')}</label><textarea id="r-notas" maxLength="2000" value=${notas} onInput=${e => setNotas(e.target.value)}></textarea></div>
       </div>
-      <div className="resumen"><h2>Tu renta</h2><${Totales} r=${r} />
-        <button className="boton" type="submit" disabled=${ocupado}>Solicitar renta</button>
-        <p className="nota" aria-live="polite">${error || 'Las cámaras salen con operador de la red. Depósito en garantía y entrega se confirman por correo.'}</p>
+      <div className="resumen"><h2>${t('Tu renta', 'Your rental')}</h2><${Totales} r=${r} />
+        <button className="boton" type="submit" disabled=${ocupado}>${t('Solicitar renta', 'Request rental')}</button>
+        <p className="nota" aria-live="polite">${error || t('Las cámaras salen con operador de la red. Depósito en garantía y entrega se confirman por correo.', 'Cameras go out with an operator from the network. Security deposit and delivery are confirmed by email.')}</p>
       </div>
     </form>`;
   }
@@ -189,13 +193,12 @@
   // ── móvil: el menú desplegable abre la bolsa (el botón de la cabecera se oculta < 720 px)
   function BolsaNav() {
     const r = resumenDe(useBolsa());
-    const en = document.documentElement.lang.startsWith('en');
     return html`<button type="button" className="nav-bolsa" aria-haspopup="dialog" onClick=${() => {
         document.body.classList.remove('menu-abierto');
         const m = document.querySelector('.menu'); if (m) m.setAttribute('aria-expanded', 'false');
         B.abrir();
       }}>
-      <span>${en ? 'Gear bag' : 'Bolsa de equipo'}</span><span className="cuenta-piezas" aria-label=${r.piezas + (en ? ' items' : ' piezas')}>${r.piezas}</span>
+      <span>${t('Bolsa de equipo', 'Gear bag')}</span><span className="cuenta-piezas" aria-label=${r.piezas + t(' piezas', ' items')}>${r.piezas}</span>
     </button>`;
   }
   const nav = document.querySelector('.cabecera .nav');

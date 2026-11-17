@@ -97,7 +97,7 @@
   const T = EN ? {
     titulo: 'Cookies and your country',
     texto: 'We use a cookie to remember your choice and, if you accept, to identify your country (no GPS: only from the network or your time zone) so we can show your flag and language. If you decline, you will see the site in English (United States).',
-    si: 'Accept', no: 'Decline', mas: 'Privacy notice (Spanish)'
+    si: 'Accept', no: 'Decline', mas: 'Privacy notice'
   } : {
     titulo: 'Cookies y tu país',
     texto: 'Usamos una cookie para recordar tu elección y, si aceptas, identificar tu país (sin GPS: solo por la red o tu zona horaria) para mostrarte tu bandera e idioma. Si no aceptas, verás el sitio en inglés (Estados Unidos).',
@@ -110,7 +110,7 @@
     aviso.className = 'aviso-cookies';
     aviso.setAttribute('role', 'dialog');
     aviso.setAttribute('aria-labelledby', 'aviso-cookies-t');
-    aviso.innerHTML = `<div><h2 id="aviso-cookies-t" class="mono">${T.titulo}</h2><p>${T.texto} <a href="${BASE}legal/aviso-de-privacidad.html#publicidad"${EN ? ' hreflang="es"' : ''}>${T.mas}</a></p></div>` +
+    aviso.innerHTML = `<div><h2 id="aviso-cookies-t" class="mono">${T.titulo}</h2><p>${T.texto} <a href="${BASE}${EN ? 'en/legal/privacy.html#advertising' : 'legal/aviso-de-privacidad.html#publicidad'}">${T.mas}</a></p></div>` +
       `<div class="aviso-cookies-acciones"><button type="button" class="boton" data-si>${T.si}</button><button type="button" class="boton hueco" data-no>${T.no}</button></div>`;
     document.body.appendChild(aviso);
     aviso.querySelector('[data-si]').addEventListener('click', aceptar);

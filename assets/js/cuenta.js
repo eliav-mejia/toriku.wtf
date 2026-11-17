@@ -6,6 +6,7 @@ window.TorikuCuenta = (() => {
   const CFG = window.TORIKU_SUPABASE || {}, CLAVE = 'toriku.sesion', subs = new Set();
   const activa = !!(CFG.url && CFG.anonKey);
   const base = activa ? CFG.url.replace(/\/$/, '') : '';
+  const EN = (document.documentElement.lang || '').toLowerCase().startsWith('en'), t = (es, en) => EN ? en : es;
   let sesion = null;
   try { sesion = JSON.parse(localStorage.getItem(CLAVE) || 'null'); } catch (e) { /* sin almacenamiento */ }
 
@@ -27,10 +28,10 @@ window.TorikuCuenta = (() => {
     return d;
   }
   function traducir(m) {
-    if (/invalid login credentials/i.test(m)) return 'Correo o contraseña incorrectos.';
-    if (/email not confirmed/i.test(m)) return 'Confirma tu correo antes de entrar (revisa tu bandeja).';
-    if (/already registered/i.test(m)) return 'Ese correo ya tiene cuenta: inicia sesión.';
-    if (/password/i.test(m) && /6/.test(m)) return 'La contraseña debe tener al menos 6 caracteres.';
+    if (/invalid login credentials/i.test(m)) return t('Correo o contraseña incorrectos.', 'Wrong email or password.');
+    if (/email not confirmed/i.test(m)) return t('Confirma tu correo antes de entrar (revisa tu bandeja).', 'Confirm your email before signing in (check your inbox).');
+    if (/already registered/i.test(m)) return t('Ese correo ya tiene cuenta: inicia sesión.', 'That email already has an account: sign in.');
+    if (/password/i.test(m) && /6/.test(m)) return t('La contraseña debe tener al menos 6 caracteres.', 'Password must be at least 6 characters.');
     return m;
   }
 
@@ -64,7 +65,7 @@ window.TorikuCuenta = (() => {
     async salir() { const t = sesion && sesion.access_token; fijar(null); if (t) pedir('/auth/v1/logout', {}, t).catch(() => {}); },
     // Inserta la solicitud de renta; RLS en «rentas» solo deja escribir filas propias.
     async solicitarRenta(fila) {
-      const t = await token(); if (!t) throw new Error('Tu sesión expiró: vuelve a entrar.');
+      const t = await token(); if (!t) throw new Error(t('Tu sesión expiró: vuelve a entrar.', 'Your session expired: sign in again.'));
       await pedir('/rest/v1/rentas', fila, t, { Prefer: 'return=minimal' });
     }
   };
