@@ -50,35 +50,185 @@
     <xhtml:link rel="alternate" hreflang="es-MX" href="https://toriku.wtf/legal/terminos.html"/><xhtml:link rel="alternate" hreflang="en-US" href="https://toriku.wtf/en/legal/terms.html"/><xhtml:link rel="alternate" hreflang="x-default" href="https://toriku.wtf/en/legal/terms.html"/>
   </url>
   <!-- blog:start -->
-  <url><loc>https://toriku.wtf/blog/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://toriku.wtf/blog/ia-creativa-del-guion-al-storyboard/</loc><lastmod>2026-11-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://toriku.wtf/blog/ia-etica-cuando-si-cuando-no/</loc><lastmod>2026-11-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://toriku.wtf/blog/monetizar-videos-con-ia-youtube/</loc><lastmod>2026-11-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://toriku.wtf/blog/como-ganar-dinero-con-un-cortometraje/</loc><lastmod>2026-11-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://toriku.wtf/blog/estandares-de-entrega-dcp-color-audio/</loc><lastmod>2026-11-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://toriku.wtf/blog/estandares-ia-sindicatos-c2pa/</loc><lastmod>2026-11-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://toriku.wtf/blog/derechos-de-autor-del-cine-en-mexico/</loc><lastmod>2026-11-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://toriku.wtf/blog/obras-hechas-con-ia-en-mexico-scjn/</loc><lastmod>2026-11-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://toriku.wtf/blog/propiedad-intelectual-audiovisual-espana/</loc><lastmod>2026-11-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://toriku.wtf/blog/copyright-en-estados-unidos-para-creadores/</loc><lastmod>2026-11-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://toriku.wtf/blog/derechos-de-autor-audiovisual-en-latinoamerica/</loc><lastmod>2026-11-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://toriku.wtf/blog/videocritica-sin-infringir-derechos/</loc><lastmod>2026-11-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://toriku.wtf/blog/mercado-cine-mexico-cifras/</loc><lastmod>2026-11-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://toriku.wtf/blog/ley-federal-de-cine-y-el-audiovisual-2026/</loc><lastmod>2026-11-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://toriku.wtf/blog/financiar-tu-corto-en-mexico/</loc><lastmod>2026-11-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://toriku.wtf/blog/festivales-de-cine-en-mexico-para-cortos/</loc><lastmod>2026-11-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://toriku.wtf/blog/ficm-2026-ganadores-lo-que-nos-dejan/</loc><lastmod>2026-11-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://toriku.wtf/blog/como-abrir-un-cineclub-legal-en-mexico/</loc><lastmod>2026-11-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://toriku.wtf/blog/programar-un-cineclub-dominio-publico-y-cine-mexicano/</loc><lastmod>2026-11-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://toriku.wtf/blog/escribir-un-cortometraje-estructura/</loc><lastmod>2026-11-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://toriku.wtf/blog/iluminar-un-corto-con-poco-presupuesto/</loc><lastmod>2026-11-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://toriku.wtf/blog/sonido-directo-para-cortos/</loc><lastmod>2026-11-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://toriku.wtf/blog/filmar-cine-con-celular/</loc><lastmod>2026-11-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://toriku.wtf/blog/filmar-en-la-ciudad-de-mexico-permisos/</loc><lastmod>2026-11-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://toriku.wtf/blog/estrenos-de-cine-en-mexico-noviembre-2026/</loc><lastmod>2026-11-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://toriku.wtf/blog/atrapelo-quien-pueda-jaime-camil-estreno/</loc><lastmod>2026-11-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://toriku.wtf/blog/juegos-del-hambre-amanecer-en-la-cosecha/</loc><lastmod>2026-11-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://toriku.wtf/blog/gta-vi-lanzamiento-19-noviembre-creadores/</loc><lastmod>2026-11-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://toriku.wtf/blog/clips-de-gta-vi-captura-edicion-derechos/</loc><lastmod>2026-11-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://toriku.wtf/blog/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq><priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://toriku.wtf/blog/"/><xhtml:link rel="alternate" hreflang="en-US" href="https://toriku.wtf/en/blog/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://toriku.wtf/en/blog/"/>
+  </url>
+  <url><loc>https://toriku.wtf/blog/ia-creativa-del-guion-al-storyboard/</loc><lastmod>2026-11-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://toriku.wtf/blog/ia-creativa-del-guion-al-storyboard/"/><xhtml:link rel="alternate" hreflang="en-US" href="https://toriku.wtf/en/blog/creative-ai-from-script-to-storyboard/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://toriku.wtf/en/blog/creative-ai-from-script-to-storyboard/"/>
+  </url>
+  <url><loc>https://toriku.wtf/blog/ia-etica-cuando-si-cuando-no/</loc><lastmod>2026-11-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://toriku.wtf/blog/ia-etica-cuando-si-cuando-no/"/><xhtml:link rel="alternate" hreflang="en-US" href="https://toriku.wtf/en/blog/when-is-ai-ethical-in-a-short-film/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://toriku.wtf/en/blog/when-is-ai-ethical-in-a-short-film/"/>
+  </url>
+  <url><loc>https://toriku.wtf/blog/monetizar-videos-con-ia-youtube/</loc><lastmod>2026-11-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://toriku.wtf/blog/monetizar-videos-con-ia-youtube/"/><xhtml:link rel="alternate" hreflang="en-US" href="https://toriku.wtf/en/blog/monetizing-ai-videos-on-youtube/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://toriku.wtf/en/blog/monetizing-ai-videos-on-youtube/"/>
+  </url>
+  <url><loc>https://toriku.wtf/blog/como-ganar-dinero-con-un-cortometraje/</loc><lastmod>2026-11-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://toriku.wtf/blog/como-ganar-dinero-con-un-cortometraje/"/><xhtml:link rel="alternate" hreflang="en-US" href="https://toriku.wtf/en/blog/how-to-make-money-with-a-short-film-in-mexico/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://toriku.wtf/en/blog/how-to-make-money-with-a-short-film-in-mexico/"/>
+  </url>
+  <url><loc>https://toriku.wtf/blog/estandares-de-entrega-dcp-color-audio/</loc><lastmod>2026-11-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://toriku.wtf/blog/estandares-de-entrega-dcp-color-audio/"/><xhtml:link rel="alternate" hreflang="en-US" href="https://toriku.wtf/en/blog/industry-delivery-standards-dcp-color-audio/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://toriku.wtf/en/blog/industry-delivery-standards-dcp-color-audio/"/>
+  </url>
+  <url><loc>https://toriku.wtf/blog/estandares-ia-sindicatos-c2pa/</loc><lastmod>2026-11-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://toriku.wtf/blog/estandares-ia-sindicatos-c2pa/"/><xhtml:link rel="alternate" hreflang="en-US" href="https://toriku.wtf/en/blog/ai-standards-unions-contracts-c2pa/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://toriku.wtf/en/blog/ai-standards-unions-contracts-c2pa/"/>
+  </url>
+  <url><loc>https://toriku.wtf/blog/derechos-de-autor-del-cine-en-mexico/</loc><lastmod>2026-11-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://toriku.wtf/blog/derechos-de-autor-del-cine-en-mexico/"/><xhtml:link rel="alternate" hreflang="en-US" href="https://toriku.wtf/en/blog/film-copyright-in-mexico-who-owns-your-short/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://toriku.wtf/en/blog/film-copyright-in-mexico-who-owns-your-short/"/>
+  </url>
+  <url><loc>https://toriku.wtf/blog/obras-hechas-con-ia-en-mexico-scjn/</loc><lastmod>2026-11-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://toriku.wtf/blog/obras-hechas-con-ia-en-mexico-scjn/"/><xhtml:link rel="alternate" hreflang="en-US" href="https://toriku.wtf/en/blog/ai-generated-works-in-mexico-supreme-court/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://toriku.wtf/en/blog/ai-generated-works-in-mexico-supreme-court/"/>
+  </url>
+  <url><loc>https://toriku.wtf/blog/propiedad-intelectual-audiovisual-espana/</loc><lastmod>2026-11-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://toriku.wtf/blog/propiedad-intelectual-audiovisual-espana/"/><xhtml:link rel="alternate" hreflang="en-US" href="https://toriku.wtf/en/blog/audiovisual-intellectual-property-in-spain/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://toriku.wtf/en/blog/audiovisual-intellectual-property-in-spain/"/>
+  </url>
+  <url><loc>https://toriku.wtf/blog/copyright-en-estados-unidos-para-creadores/</loc><lastmod>2026-11-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://toriku.wtf/blog/copyright-en-estados-unidos-para-creadores/"/><xhtml:link rel="alternate" hreflang="en-US" href="https://toriku.wtf/en/blog/us-copyright-for-mexican-creators/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://toriku.wtf/en/blog/us-copyright-for-mexican-creators/"/>
+  </url>
+  <url><loc>https://toriku.wtf/blog/derechos-de-autor-audiovisual-en-latinoamerica/</loc><lastmod>2026-11-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://toriku.wtf/blog/derechos-de-autor-audiovisual-en-latinoamerica/"/><xhtml:link rel="alternate" hreflang="en-US" href="https://toriku.wtf/en/blog/audiovisual-copyright-in-latin-america/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://toriku.wtf/en/blog/audiovisual-copyright-in-latin-america/"/>
+  </url>
+  <url><loc>https://toriku.wtf/blog/videocritica-sin-infringir-derechos/</loc><lastmod>2026-11-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://toriku.wtf/blog/videocritica-sin-infringir-derechos/"/><xhtml:link rel="alternate" hreflang="en-US" href="https://toriku.wtf/en/blog/video-essays-without-infringing-copyright/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://toriku.wtf/en/blog/video-essays-without-infringing-copyright/"/>
+  </url>
+  <url><loc>https://toriku.wtf/blog/mercado-cine-mexico-cifras/</loc><lastmod>2026-11-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://toriku.wtf/blog/mercado-cine-mexico-cifras/"/><xhtml:link rel="alternate" hreflang="en-US" href="https://toriku.wtf/en/blog/mexican-film-market-figures-2025/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://toriku.wtf/en/blog/mexican-film-market-figures-2025/"/>
+  </url>
+  <url><loc>https://toriku.wtf/blog/ley-federal-de-cine-y-el-audiovisual-2026/</loc><lastmod>2026-11-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://toriku.wtf/blog/ley-federal-de-cine-y-el-audiovisual-2026/"/><xhtml:link rel="alternate" hreflang="en-US" href="https://toriku.wtf/en/blog/mexico-federal-film-law-2026/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://toriku.wtf/en/blog/mexico-federal-film-law-2026/"/>
+  </url>
+  <url><loc>https://toriku.wtf/blog/financiar-tu-corto-en-mexico/</loc><lastmod>2026-11-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://toriku.wtf/blog/financiar-tu-corto-en-mexico/"/><xhtml:link rel="alternate" hreflang="en-US" href="https://toriku.wtf/en/blog/financing-your-short-film-in-mexico/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://toriku.wtf/en/blog/financing-your-short-film-in-mexico/"/>
+  </url>
+  <url><loc>https://toriku.wtf/blog/festivales-de-cine-en-mexico-para-cortos/</loc><lastmod>2026-11-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://toriku.wtf/blog/festivales-de-cine-en-mexico-para-cortos/"/><xhtml:link rel="alternate" hreflang="en-US" href="https://toriku.wtf/en/blog/film-festivals-in-mexico-for-short-films/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://toriku.wtf/en/blog/film-festivals-in-mexico-for-short-films/"/>
+  </url>
+  <url><loc>https://toriku.wtf/blog/ficm-2026-ganadores-lo-que-nos-dejan/</loc><lastmod>2026-11-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://toriku.wtf/blog/ficm-2026-ganadores-lo-que-nos-dejan/"/><xhtml:link rel="alternate" hreflang="en-US" href="https://toriku.wtf/en/blog/ficm-2026-morelia-winners-lessons/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://toriku.wtf/en/blog/ficm-2026-morelia-winners-lessons/"/>
+  </url>
+  <url><loc>https://toriku.wtf/blog/como-abrir-un-cineclub-legal-en-mexico/</loc><lastmod>2026-11-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://toriku.wtf/blog/como-abrir-un-cineclub-legal-en-mexico/"/><xhtml:link rel="alternate" hreflang="en-US" href="https://toriku.wtf/en/blog/how-to-open-a-legal-film-club-in-mexico/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://toriku.wtf/en/blog/how-to-open-a-legal-film-club-in-mexico/"/>
+  </url>
+  <url><loc>https://toriku.wtf/blog/programar-un-cineclub-dominio-publico-y-cine-mexicano/</loc><lastmod>2026-11-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://toriku.wtf/blog/programar-un-cineclub-dominio-publico-y-cine-mexicano/"/><xhtml:link rel="alternate" hreflang="en-US" href="https://toriku.wtf/en/blog/programming-a-film-club-public-domain-mexican-cinema/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://toriku.wtf/en/blog/programming-a-film-club-public-domain-mexican-cinema/"/>
+  </url>
+  <url><loc>https://toriku.wtf/blog/escribir-un-cortometraje-estructura/</loc><lastmod>2026-11-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://toriku.wtf/blog/escribir-un-cortometraje-estructura/"/><xhtml:link rel="alternate" hreflang="en-US" href="https://toriku.wtf/en/blog/writing-a-short-film-ten-page-structure/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://toriku.wtf/en/blog/writing-a-short-film-ten-page-structure/"/>
+  </url>
+  <url><loc>https://toriku.wtf/blog/iluminar-un-corto-con-poco-presupuesto/</loc><lastmod>2026-11-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://toriku.wtf/blog/iluminar-un-corto-con-poco-presupuesto/"/><xhtml:link rel="alternate" hreflang="en-US" href="https://toriku.wtf/en/blog/lighting-a-short-film-on-a-low-budget/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://toriku.wtf/en/blog/lighting-a-short-film-on-a-low-budget/"/>
+  </url>
+  <url><loc>https://toriku.wtf/blog/sonido-directo-para-cortos/</loc><lastmod>2026-11-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://toriku.wtf/blog/sonido-directo-para-cortos/"/><xhtml:link rel="alternate" hreflang="en-US" href="https://toriku.wtf/en/blog/location-sound-for-short-films/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://toriku.wtf/en/blog/location-sound-for-short-films/"/>
+  </url>
+  <url><loc>https://toriku.wtf/blog/filmar-cine-con-celular/</loc><lastmod>2026-11-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://toriku.wtf/blog/filmar-cine-con-celular/"/><xhtml:link rel="alternate" hreflang="en-US" href="https://toriku.wtf/en/blog/shooting-a-film-on-your-phone/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://toriku.wtf/en/blog/shooting-a-film-on-your-phone/"/>
+  </url>
+  <url><loc>https://toriku.wtf/blog/filmar-en-la-ciudad-de-mexico-permisos/</loc><lastmod>2026-11-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://toriku.wtf/blog/filmar-en-la-ciudad-de-mexico-permisos/"/><xhtml:link rel="alternate" hreflang="en-US" href="https://toriku.wtf/en/blog/filming-in-mexico-city-permits/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://toriku.wtf/en/blog/filming-in-mexico-city-permits/"/>
+  </url>
+  <url><loc>https://toriku.wtf/blog/estrenos-de-cine-en-mexico-noviembre-2026/</loc><lastmod>2026-11-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://toriku.wtf/blog/estrenos-de-cine-en-mexico-noviembre-2026/"/><xhtml:link rel="alternate" hreflang="en-US" href="https://toriku.wtf/en/blog/movie-releases-in-mexico-november-2026/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://toriku.wtf/en/blog/movie-releases-in-mexico-november-2026/"/>
+  </url>
+  <url><loc>https://toriku.wtf/blog/atrapelo-quien-pueda-jaime-camil-estreno/</loc><lastmod>2026-11-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://toriku.wtf/blog/atrapelo-quien-pueda-jaime-camil-estreno/"/><xhtml:link rel="alternate" hreflang="en-US" href="https://toriku.wtf/en/blog/atrapelo-quien-pueda-jaime-camil-romantic-comedy/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://toriku.wtf/en/blog/atrapelo-quien-pueda-jaime-camil-romantic-comedy/"/>
+  </url>
+  <url><loc>https://toriku.wtf/blog/juegos-del-hambre-amanecer-en-la-cosecha/</loc><lastmod>2026-11-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://toriku.wtf/blog/juegos-del-hambre-amanecer-en-la-cosecha/"/><xhtml:link rel="alternate" hreflang="en-US" href="https://toriku.wtf/en/blog/hunger-games-sunrise-on-the-reaping-what-to-expect/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://toriku.wtf/en/blog/hunger-games-sunrise-on-the-reaping-what-to-expect/"/>
+  </url>
+  <url><loc>https://toriku.wtf/blog/gta-vi-lanzamiento-19-noviembre-creadores/</loc><lastmod>2026-11-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://toriku.wtf/blog/gta-vi-lanzamiento-19-noviembre-creadores/"/><xhtml:link rel="alternate" hreflang="en-US" href="https://toriku.wtf/en/blog/gta-vi-launch-november-19-video-creators/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://toriku.wtf/en/blog/gta-vi-launch-november-19-video-creators/"/>
+  </url>
+  <url><loc>https://toriku.wtf/blog/clips-de-gta-vi-captura-edicion-derechos/</loc><lastmod>2026-11-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://toriku.wtf/blog/clips-de-gta-vi-captura-edicion-derechos/"/><xhtml:link rel="alternate" hreflang="en-US" href="https://toriku.wtf/en/blog/gta-vi-clips-capture-editing-rights/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://toriku.wtf/en/blog/gta-vi-clips-capture-editing-rights/"/>
+  </url>
+  <url><loc>https://toriku.wtf/en/blog/</loc><lastmod>2026-11-15</lastmod><changefreq>weekly</changefreq><priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://toriku.wtf/blog/"/><xhtml:link rel="alternate" hreflang="en-US" href="https://toriku.wtf/en/blog/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://toriku.wtf/en/blog/"/>
+  </url>
+  <url><loc>https://toriku.wtf/en/blog/creative-ai-from-script-to-storyboard/</loc><lastmod>2026-11-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://toriku.wtf/blog/ia-creativa-del-guion-al-storyboard/"/><xhtml:link rel="alternate" hreflang="en-US" href="https://toriku.wtf/en/blog/creative-ai-from-script-to-storyboard/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://toriku.wtf/en/blog/creative-ai-from-script-to-storyboard/"/>
+  </url>
+  <url><loc>https://toriku.wtf/en/blog/when-is-ai-ethical-in-a-short-film/</loc><lastmod>2026-11-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://toriku.wtf/blog/ia-etica-cuando-si-cuando-no/"/><xhtml:link rel="alternate" hreflang="en-US" href="https://toriku.wtf/en/blog/when-is-ai-ethical-in-a-short-film/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://toriku.wtf/en/blog/when-is-ai-ethical-in-a-short-film/"/>
+  </url>
+  <url><loc>https://toriku.wtf/en/blog/monetizing-ai-videos-on-youtube/</loc><lastmod>2026-11-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://toriku.wtf/blog/monetizar-videos-con-ia-youtube/"/><xhtml:link rel="alternate" hreflang="en-US" href="https://toriku.wtf/en/blog/monetizing-ai-videos-on-youtube/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://toriku.wtf/en/blog/monetizing-ai-videos-on-youtube/"/>
+  </url>
+  <url><loc>https://toriku.wtf/en/blog/how-to-make-money-with-a-short-film-in-mexico/</loc><lastmod>2026-11-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://toriku.wtf/blog/como-ganar-dinero-con-un-cortometraje/"/><xhtml:link rel="alternate" hreflang="en-US" href="https://toriku.wtf/en/blog/how-to-make-money-with-a-short-film-in-mexico/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://toriku.wtf/en/blog/how-to-make-money-with-a-short-film-in-mexico/"/>
+  </url>
+  <url><loc>https://toriku.wtf/en/blog/industry-delivery-standards-dcp-color-audio/</loc><lastmod>2026-11-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://toriku.wtf/blog/estandares-de-entrega-dcp-color-audio/"/><xhtml:link rel="alternate" hreflang="en-US" href="https://toriku.wtf/en/blog/industry-delivery-standards-dcp-color-audio/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://toriku.wtf/en/blog/industry-delivery-standards-dcp-color-audio/"/>
+  </url>
+  <url><loc>https://toriku.wtf/en/blog/ai-standards-unions-contracts-c2pa/</loc><lastmod>2026-11-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://toriku.wtf/blog/estandares-ia-sindicatos-c2pa/"/><xhtml:link rel="alternate" hreflang="en-US" href="https://toriku.wtf/en/blog/ai-standards-unions-contracts-c2pa/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://toriku.wtf/en/blog/ai-standards-unions-contracts-c2pa/"/>
+  </url>
+  <url><loc>https://toriku.wtf/en/blog/film-copyright-in-mexico-who-owns-your-short/</loc><lastmod>2026-11-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://toriku.wtf/blog/derechos-de-autor-del-cine-en-mexico/"/><xhtml:link rel="alternate" hreflang="en-US" href="https://toriku.wtf/en/blog/film-copyright-in-mexico-who-owns-your-short/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://toriku.wtf/en/blog/film-copyright-in-mexico-who-owns-your-short/"/>
+  </url>
+  <url><loc>https://toriku.wtf/en/blog/ai-generated-works-in-mexico-supreme-court/</loc><lastmod>2026-11-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://toriku.wtf/blog/obras-hechas-con-ia-en-mexico-scjn/"/><xhtml:link rel="alternate" hreflang="en-US" href="https://toriku.wtf/en/blog/ai-generated-works-in-mexico-supreme-court/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://toriku.wtf/en/blog/ai-generated-works-in-mexico-supreme-court/"/>
+  </url>
+  <url><loc>https://toriku.wtf/en/blog/audiovisual-intellectual-property-in-spain/</loc><lastmod>2026-11-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://toriku.wtf/blog/propiedad-intelectual-audiovisual-espana/"/><xhtml:link rel="alternate" hreflang="en-US" href="https://toriku.wtf/en/blog/audiovisual-intellectual-property-in-spain/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://toriku.wtf/en/blog/audiovisual-intellectual-property-in-spain/"/>
+  </url>
+  <url><loc>https://toriku.wtf/en/blog/us-copyright-for-mexican-creators/</loc><lastmod>2026-11-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://toriku.wtf/blog/copyright-en-estados-unidos-para-creadores/"/><xhtml:link rel="alternate" hreflang="en-US" href="https://toriku.wtf/en/blog/us-copyright-for-mexican-creators/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://toriku.wtf/en/blog/us-copyright-for-mexican-creators/"/>
+  </url>
+  <url><loc>https://toriku.wtf/en/blog/audiovisual-copyright-in-latin-america/</loc><lastmod>2026-11-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://toriku.wtf/blog/derechos-de-autor-audiovisual-en-latinoamerica/"/><xhtml:link rel="alternate" hreflang="en-US" href="https://toriku.wtf/en/blog/audiovisual-copyright-in-latin-america/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://toriku.wtf/en/blog/audiovisual-copyright-in-latin-america/"/>
+  </url>
+  <url><loc>https://toriku.wtf/en/blog/video-essays-without-infringing-copyright/</loc><lastmod>2026-11-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://toriku.wtf/blog/videocritica-sin-infringir-derechos/"/><xhtml:link rel="alternate" hreflang="en-US" href="https://toriku.wtf/en/blog/video-essays-without-infringing-copyright/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://toriku.wtf/en/blog/video-essays-without-infringing-copyright/"/>
+  </url>
+  <url><loc>https://toriku.wtf/en/blog/mexican-film-market-figures-2025/</loc><lastmod>2026-11-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://toriku.wtf/blog/mercado-cine-mexico-cifras/"/><xhtml:link rel="alternate" hreflang="en-US" href="https://toriku.wtf/en/blog/mexican-film-market-figures-2025/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://toriku.wtf/en/blog/mexican-film-market-figures-2025/"/>
+  </url>
+  <url><loc>https://toriku.wtf/en/blog/mexico-federal-film-law-2026/</loc><lastmod>2026-11-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://toriku.wtf/blog/ley-federal-de-cine-y-el-audiovisual-2026/"/><xhtml:link rel="alternate" hreflang="en-US" href="https://toriku.wtf/en/blog/mexico-federal-film-law-2026/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://toriku.wtf/en/blog/mexico-federal-film-law-2026/"/>
+  </url>
+  <url><loc>https://toriku.wtf/en/blog/financing-your-short-film-in-mexico/</loc><lastmod>2026-11-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://toriku.wtf/blog/financiar-tu-corto-en-mexico/"/><xhtml:link rel="alternate" hreflang="en-US" href="https://toriku.wtf/en/blog/financing-your-short-film-in-mexico/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://toriku.wtf/en/blog/financing-your-short-film-in-mexico/"/>
+  </url>
+  <url><loc>https://toriku.wtf/en/blog/film-festivals-in-mexico-for-short-films/</loc><lastmod>2026-11-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://toriku.wtf/blog/festivales-de-cine-en-mexico-para-cortos/"/><xhtml:link rel="alternate" hreflang="en-US" href="https://toriku.wtf/en/blog/film-festivals-in-mexico-for-short-films/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://toriku.wtf/en/blog/film-festivals-in-mexico-for-short-films/"/>
+  </url>
+  <url><loc>https://toriku.wtf/en/blog/ficm-2026-morelia-winners-lessons/</loc><lastmod>2026-11-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://toriku.wtf/blog/ficm-2026-ganadores-lo-que-nos-dejan/"/><xhtml:link rel="alternate" hreflang="en-US" href="https://toriku.wtf/en/blog/ficm-2026-morelia-winners-lessons/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://toriku.wtf/en/blog/ficm-2026-morelia-winners-lessons/"/>
+  </url>
+  <url><loc>https://toriku.wtf/en/blog/how-to-open-a-legal-film-club-in-mexico/</loc><lastmod>2026-11-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://toriku.wtf/blog/como-abrir-un-cineclub-legal-en-mexico/"/><xhtml:link rel="alternate" hreflang="en-US" href="https://toriku.wtf/en/blog/how-to-open-a-legal-film-club-in-mexico/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://toriku.wtf/en/blog/how-to-open-a-legal-film-club-in-mexico/"/>
+  </url>
+  <url><loc>https://toriku.wtf/en/blog/programming-a-film-club-public-domain-mexican-cinema/</loc><lastmod>2026-11-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://toriku.wtf/blog/programar-un-cineclub-dominio-publico-y-cine-mexicano/"/><xhtml:link rel="alternate" hreflang="en-US" href="https://toriku.wtf/en/blog/programming-a-film-club-public-domain-mexican-cinema/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://toriku.wtf/en/blog/programming-a-film-club-public-domain-mexican-cinema/"/>
+  </url>
+  <url><loc>https://toriku.wtf/en/blog/writing-a-short-film-ten-page-structure/</loc><lastmod>2026-11-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://toriku.wtf/blog/escribir-un-cortometraje-estructura/"/><xhtml:link rel="alternate" hreflang="en-US" href="https://toriku.wtf/en/blog/writing-a-short-film-ten-page-structure/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://toriku.wtf/en/blog/writing-a-short-film-ten-page-structure/"/>
+  </url>
+  <url><loc>https://toriku.wtf/en/blog/lighting-a-short-film-on-a-low-budget/</loc><lastmod>2026-11-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://toriku.wtf/blog/iluminar-un-corto-con-poco-presupuesto/"/><xhtml:link rel="alternate" hreflang="en-US" href="https://toriku.wtf/en/blog/lighting-a-short-film-on-a-low-budget/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://toriku.wtf/en/blog/lighting-a-short-film-on-a-low-budget/"/>
+  </url>
+  <url><loc>https://toriku.wtf/en/blog/location-sound-for-short-films/</loc><lastmod>2026-11-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://toriku.wtf/blog/sonido-directo-para-cortos/"/><xhtml:link rel="alternate" hreflang="en-US" href="https://toriku.wtf/en/blog/location-sound-for-short-films/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://toriku.wtf/en/blog/location-sound-for-short-films/"/>
+  </url>
+  <url><loc>https://toriku.wtf/en/blog/shooting-a-film-on-your-phone/</loc><lastmod>2026-11-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://toriku.wtf/blog/filmar-cine-con-celular/"/><xhtml:link rel="alternate" hreflang="en-US" href="https://toriku.wtf/en/blog/shooting-a-film-on-your-phone/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://toriku.wtf/en/blog/shooting-a-film-on-your-phone/"/>
+  </url>
+  <url><loc>https://toriku.wtf/en/blog/filming-in-mexico-city-permits/</loc><lastmod>2026-11-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://toriku.wtf/blog/filmar-en-la-ciudad-de-mexico-permisos/"/><xhtml:link rel="alternate" hreflang="en-US" href="https://toriku.wtf/en/blog/filming-in-mexico-city-permits/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://toriku.wtf/en/blog/filming-in-mexico-city-permits/"/>
+  </url>
+  <url><loc>https://toriku.wtf/en/blog/movie-releases-in-mexico-november-2026/</loc><lastmod>2026-11-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://toriku.wtf/blog/estrenos-de-cine-en-mexico-noviembre-2026/"/><xhtml:link rel="alternate" hreflang="en-US" href="https://toriku.wtf/en/blog/movie-releases-in-mexico-november-2026/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://toriku.wtf/en/blog/movie-releases-in-mexico-november-2026/"/>
+  </url>
+  <url><loc>https://toriku.wtf/en/blog/atrapelo-quien-pueda-jaime-camil-romantic-comedy/</loc><lastmod>2026-11-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://toriku.wtf/blog/atrapelo-quien-pueda-jaime-camil-estreno/"/><xhtml:link rel="alternate" hreflang="en-US" href="https://toriku.wtf/en/blog/atrapelo-quien-pueda-jaime-camil-romantic-comedy/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://toriku.wtf/en/blog/atrapelo-quien-pueda-jaime-camil-romantic-comedy/"/>
+  </url>
+  <url><loc>https://toriku.wtf/en/blog/hunger-games-sunrise-on-the-reaping-what-to-expect/</loc><lastmod>2026-11-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://toriku.wtf/blog/juegos-del-hambre-amanecer-en-la-cosecha/"/><xhtml:link rel="alternate" hreflang="en-US" href="https://toriku.wtf/en/blog/hunger-games-sunrise-on-the-reaping-what-to-expect/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://toriku.wtf/en/blog/hunger-games-sunrise-on-the-reaping-what-to-expect/"/>
+  </url>
+  <url><loc>https://toriku.wtf/en/blog/gta-vi-launch-november-19-video-creators/</loc><lastmod>2026-11-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://toriku.wtf/blog/gta-vi-lanzamiento-19-noviembre-creadores/"/><xhtml:link rel="alternate" hreflang="en-US" href="https://toriku.wtf/en/blog/gta-vi-launch-november-19-video-creators/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://toriku.wtf/en/blog/gta-vi-launch-november-19-video-creators/"/>
+  </url>
+  <url><loc>https://toriku.wtf/en/blog/gta-vi-clips-capture-editing-rights/</loc><lastmod>2026-11-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://toriku.wtf/blog/clips-de-gta-vi-captura-edicion-derechos/"/><xhtml:link rel="alternate" hreflang="en-US" href="https://toriku.wtf/en/blog/gta-vi-clips-capture-editing-rights/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://toriku.wtf/en/blog/gta-vi-clips-capture-editing-rights/"/>
+  </url>
   <!-- blog:end -->
 </urlset>
