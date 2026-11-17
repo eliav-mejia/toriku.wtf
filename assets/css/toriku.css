@@ -38,7 +38,16 @@ a { color: inherit; }
 .boton.hueco:hover { background: var(--papel); color: var(--negro); border-color: var(--papel); }
 .nav .solo-movil { display: none; }
 .empuje { margin-left: auto; }
-.menu { display: none; margin-left: auto; background: none; border: 1px solid var(--linea-2); color: var(--papel); padding: 8px 12px; font: 600 12px var(--mono); letter-spacing: .1em; }
+.menu { display: none; margin-left: auto; background: none; border: 0; color: var(--papel); width: 40px; height: 40px; padding: 0; position: relative; cursor: pointer; }
+/* icono ☰ sin palabra ni recuadro (2026-11-16); se vuelve ✕ con el menú abierto */
+.menu .barras, .menu .barras::before, .menu .barras::after { position: absolute; left: 50%; width: 22px; height: 2px; margin-left: -11px; background: currentColor; transition: transform .2s, opacity .2s; }
+.menu .barras { top: 50%; margin-top: -1px; }
+.menu .barras::before, .menu .barras::after { content: ''; left: 0; margin-left: 0; }
+.menu .barras::before { top: -7px; } .menu .barras::after { top: 7px; }
+.menu[aria-expanded="true"] .barras { background: transparent; }
+.menu[aria-expanded="true"] .barras::before { transform: translateY(7px) rotate(45deg); background: var(--papel); }
+.menu[aria-expanded="true"] .barras::after { transform: translateY(-7px) rotate(-45deg); background: var(--papel); }
+.menu:focus-visible { outline: 1px solid var(--papel); outline-offset: 2px; }
 
 /* ── héroe: visor de cámara */
 .heroe { position: relative; min-height: calc(100svh - 64px); display: grid; align-items: end; overflow: hidden; border-bottom: 1px solid var(--linea); }
@@ -220,7 +229,7 @@ fieldset.campo { border: 0; margin: 0 0 22px; padding: 0; }
   .nav { display: none; position: absolute; top: 64px; left: 0; right: 0; flex-direction: column; gap: 0; background: var(--negro); border-bottom: 1px solid var(--linea); }
   .nav a { padding: 16px var(--gutter); border-top: 1px solid var(--linea); }
   body.menu-abierto .nav { display: flex; }
-  .menu { display: inline-block; }
+  .menu { display: inline-block; flex: none; }
   .nav .solo-movil { display: block; color: var(--rojo); }
   .cabecera .boton { display: none; }
   .servicios, .pasos, .dos, .extras { grid-template-columns: 1fr; }

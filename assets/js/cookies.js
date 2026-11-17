@@ -1,6 +1,6 @@
 /* Toriku · aviso de cookies + país + bandera única. Responsable: CLAUSE / FORGE (Agent Ops).
    Reglas (2026-11-16):
-   · Aviso de cookies en todas las páginas hasta que el visitante elija.
+   · Aviso de cookies en todas las páginas hasta que el visitante elija; el aviso siempre en inglés.
    · Acepta → identificamos el país (sin GPS: /cdn-cgi/trace de Cloudflare si existe; si no, la zona horaria del navegador)
      y la cabecera muestra UNA sola bandera. Solo México o España → bandera propia y sitio en español.
    · Estándar = inglés con bandera de EE. UU.: sin decisión todavía, no acepta, cualquier otro país o país sin identificar.
@@ -94,23 +94,21 @@
   }
 
   // ── aviso
-  const T = EN ? {
+  // El aviso va SIEMPRE en inglés (estándar del sitio), también en páginas en español (2026-11-16).
+  const T = {
     titulo: 'Cookies and your country',
-    texto: 'We use a cookie to remember your choice and, if you accept, to identify your country (no GPS: only from the network or your time zone) so we can show your flag and language. If you decline, you will see the site in English (United States).',
+    texto: 'We use a cookie to remember your choice and, if you accept, to identify your country (no GPS: only from the network or your time zone). The site is in English by default; it switches to Spanish only if we detect that you are in Mexico or Spain.',
     si: 'Accept', no: 'Decline', mas: 'Privacy notice'
-  } : {
-    titulo: 'Cookies y tu país',
-    texto: 'Usamos una cookie para recordar tu elección y, si aceptas, identificar tu país (sin GPS: solo por la red o tu zona horaria) para mostrarte tu bandera e idioma. Si no aceptas, verás el sitio en inglés (Estados Unidos).',
-    si: 'Aceptar', no: 'No aceptar', mas: 'Aviso de privacidad'
   };
   let aviso = null;
   function abrirAviso() {
     if (aviso) { aviso.querySelector('button').focus(); return; }
     aviso = document.createElement('section');
     aviso.className = 'aviso-cookies';
+    aviso.lang = 'en';
     aviso.setAttribute('role', 'dialog');
     aviso.setAttribute('aria-labelledby', 'aviso-cookies-t');
-    aviso.innerHTML = `<div><h2 id="aviso-cookies-t" class="mono">${T.titulo}</h2><p>${T.texto} <a href="${BASE}${EN ? 'en/legal/privacy.html#advertising' : 'legal/aviso-de-privacidad.html#publicidad'}">${T.mas}</a></p></div>` +
+    aviso.innerHTML = `<div><h2 id="aviso-cookies-t" class="mono">${T.titulo}</h2><p>${T.texto} <a href="${BASE}en/legal/privacy.html#advertising" lang="en">${T.mas}</a></p></div>` +
       `<div class="aviso-cookies-acciones"><button type="button" class="boton" data-si>${T.si}</button><button type="button" class="boton hueco" data-no>${T.no}</button></div>`;
     document.body.appendChild(aviso);
     aviso.querySelector('[data-si]').addEventListener('click', aceptar);
@@ -120,7 +118,7 @@
 
   async function aceptar() {
     const b = aviso && aviso.querySelector('[data-si]');
-    if (b) { b.disabled = true; b.textContent = EN ? 'Locating…' : 'Ubicando…'; }
+    if (b) { b.disabled = true; b.textContent = 'Locating…'; }
     guardar('si:');
     const p = await detectarPais();
     guardar('si:' + (p && PAISES[p] ? p : ''));
