@@ -44,7 +44,7 @@
     return `<article class="servicio" id="s-${d.id}">
       <span class="n mono">${String(i + 1).padStart(2, '0')} / ${String(DIS.length).padStart(2, '0')}</span>
       <h3>${esc(d.nombre)}</h3><p>${esc(d.texto)}</p>
-      <div class="desde"><span class="mono">${EN ? 'From' : 'Desde'} <b>${mxn(CAT.desde(d.id))}</b></span><a class="mono" href="${B}${EN ? 'en/' : ''}cotizar/?tipo=${d.id}">${EN ? 'Quote' : 'Cotizar'} →</a></div>
+      <div class="desde"><span class="mono">${EN ? 'From' : 'Desde'} <b>${mxn(CAT.desde(d.id))}</b></span><a class="mono" href="${B}${EN ? `en/quote/?type=${d.slugEn}` : `cotizar/?tipo=${d.id}`}">${EN ? 'Quote' : 'Cotizar'} →</a></div>
     </article>`;
   }).join('');
 

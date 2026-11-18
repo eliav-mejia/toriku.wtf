@@ -16,7 +16,9 @@
   const mxn = n => new Intl.NumberFormat(EN ? 'en-US' : 'es-MX', { style: 'currency', currency: 'MXN', maximumFractionDigits: 0 }).format(n);
   const raiz = document.getElementById('bolsa-raiz');
   const BASE = (raiz && raiz.dataset.base) || '';
-  const PAG = BASE + (EN ? 'en/' : '');            // páginas: /en/renta/, /en/cotizar/ en inglés
+  const PAG = BASE + (EN ? 'en/' : '');            // páginas del mismo idioma
+  // Rutas por idioma (2026-11-17): /renta/ ↔ /en/rent/, /cotizar/ ↔ /en/quote/, anclas #rentar ↔ #rent, #equipo ↔ #gear
+  const RUTA = EN ? { renta: 'rent/', cotizar: 'quote/', rentar: '#rent', equipo: '#gear' } : { renta: 'renta/', cotizar: 'cotizar/', rentar: '#rentar', equipo: '#equipo' };
   const useBolsa = () => useSyncExternalStore(B.suscribir, B.get);
   const resumenDe = b => CAT.cotizarEquipo(b);
 
@@ -68,7 +70,7 @@
       document.addEventListener('keydown', f); document.body.classList.add('cajon-abierto');
       return () => { document.removeEventListener('keydown', f); document.body.classList.remove('cajon-abierto'); };
     }, [abierta]);
-    const enCotizar = /\/cotizar\/?$/.test(location.pathname), enRenta = /\/renta\/?$/.test(location.pathname);
+    const enCotizar = /\/(cotizar|quote)\/?$/.test(location.pathname), enRenta = /\/(renta|rent)\/?$/.test(location.pathname);
     return html`<${React.Fragment}>
       <button type="button" className="bolsa-boton" aria-haspopup="dialog" aria-expanded=${abierta} onClick=${() => setAbierta(true)}>
         <span className="txt">${t('Equipo', 'Gear')}</span><span className="cuenta-piezas" aria-label=${r.piezas + t(' piezas', ' items')}>${r.piezas}</span>
@@ -78,7 +80,7 @@
         <header><h2>${t('Tu equipo', 'Your gear')}</h2><button type="button" className="cerrar" aria-label=${t('Cerrar', 'Close')} onClick=${() => setAbierta(false)}>×</button></header>
         ${r.piezas === 0
           ? html`<p className="vacio">${t('Tu bolsa está vacía. Agrega tripiés, luz, audio o cámaras con operador.', 'Your bag is empty. Add tripods, lights, audio or cameras with an operator.')}</p>
-                 <a className="boton" href=${PAG + 'renta/'}>${t('Ver equipo', 'See gear')}</a>`
+                 <a className="boton" href=${PAG + RUTA.renta}>${t('Ver equipo', 'See gear')}</a>`
           : html`<${React.Fragment}>
             <div className="campo-dias"><span className="mono">${t('Días de renta', 'Rental days')}</span><${Contador} valor=${b.dias} min=${1} max=${30} etiqueta=${t('Días de renta', 'Rental days')} onCambio=${B.dias} /></div>
             <ul className="bolsa-lista">
@@ -89,8 +91,8 @@
             <div className="cajon-acciones">
               ${enCotizar
                 ? html`<button type="button" className="boton" onClick=${() => setAbierta(false)}>${t('Listo, ya está en tu cotización', 'Done, it is in your quote')}</button>`
-                : html`<a className="boton" href=${PAG + 'cotizar/#equipo'}>${t('Agregar a mi cotización', 'Add to my quote')}</a>`}
-              <a className="boton hueco" href=${PAG + 'renta/#rentar'} onClick=${() => enRenta && setAbierta(false)}>${t('Rentar solo el equipo', 'Rent gear only')}</a>
+                : html`<a className="boton" href=${PAG + RUTA.cotizar + RUTA.equipo}>${t('Agregar a mi cotización', 'Add to my quote')}</a>`}
+              <a className="boton hueco" href=${PAG + RUTA.renta + RUTA.rentar} onClick=${() => enRenta && setAbierta(false)}>${t('Rentar solo el equipo', 'Rent gear only')}</a>
               <button type="button" className="vaciar mono" onClick=${B.vaciar}>${t('Vaciar bolsa', 'Empty bag')}</button>
             </div>
             <p className="nota">${t('Cotizar no requiere cuenta. Para rentar equipo sin servicio necesitas registrarte con tu correo.', 'No account needed to get a quote. To rent gear without a service, sign up with your email.')}</p>
@@ -132,7 +134,7 @@
   function Acceso() {
     const [modo, setModo] = useState('entrar'), [correo, setCorreo] = useState(''), [clave, setClave] = useState('');
     const [estado, setEstado] = useState(''), [ocupado, setOcupado] = useState(false);
-    if (!CU || !CU.activa) return html`<p className="aviso">${t('El registro de cuentas aún no está activo en este sitio. Mientras tanto, agrega el equipo a una ', 'Account sign-up is not active on this site yet. Meanwhile, add the gear to a ')}<a href="../cotizar/#equipo">${t('cotización', 'quote')}</a> ${t('(no requiere cuenta).', '(no account needed).')}</p>`;
+    if (!CU || !CU.activa) return html`<p className="aviso">${t('El registro de cuentas aún no está activo en este sitio. Mientras tanto, agrega el equipo a una ', 'Account sign-up is not active on this site yet. Meanwhile, add the gear to a ')}<a href=${"../" + RUTA.cotizar + RUTA.equipo}>${t('cotización', 'quote')}</a> ${t('(no requiere cuenta).', '(no account needed).')}</p>`;
     const enviar = async e => {
       e.preventDefault(); setOcupado(true); setEstado('');
       try {

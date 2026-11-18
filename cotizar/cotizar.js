@@ -9,7 +9,8 @@
   'use strict';
   const $ = s => document.querySelector(s);
   const CAT = window.TORIKU_CATALOGO, B = window.TorikuBolsa, AG = (window.TORIKU_PORTAFOLIO || {}).agenda || { ocupadas: [] };
-  const EN = (document.documentElement.lang || '').toLowerCase().startsWith('en'), t = (es, en) => EN ? en : es;  // /en/cotizar/ usa este mismo archivo
+  const EN = (document.documentElement.lang || '').toLowerCase().startsWith('en'), t = (es, en) => EN ? en : es;  // /en/quote/ usa este mismo archivo
+  const RENTA = EN ? '../rent/' : '../renta/', GRACIAS = EN ? '../thank-you/' : '../gracias/';
   const mxn = n => new Intl.NumberFormat(EN ? 'en-US' : 'es-MX', { style: 'currency', currency: 'MXN', maximumFractionDigits: 0 }).format(n);
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   const f = $('#cotizador'); if (!f || !CAT) return;
@@ -30,10 +31,13 @@
     $('#jornadas').value = d.paquete.jornadas; $('#edicion').value = d.paquete.edicion;
     f.querySelectorAll('[data-rol]').forEach(i => { i.value = d.paquete.equipo[i.dataset.rol] || 0; });
   }
-  const tipo = new URLSearchParams(location.search).get('tipo');
-  if (CAT.disciplinas.some(d => d.id === tipo)) $('#servicio').value = tipo;
+  // ?tipo=cortometraje (ES) o ?type=short-film (EN)
+  const q = new URLSearchParams(location.search), tipo = q.get('tipo') || q.get('type');
+  const dq = CAT.disciplinas.find(d => d.id === tipo || d.slugEn === tipo);
+  if (dq) $('#servicio').value = dq.id;
   aplicarPaquete($('#servicio').value);   // solo al cargar: cambiar de proyecto no borra lo que ajustaste
-  if (location.hash === '#equipo') $('#equipo').open = true;   // viene de «Agregar a mi cotización» en la bolsa
+  const DET = $('#equipo') || $('#gear');               // id del desplegable de equipo: #equipo (ES) / #gear (EN)
+  if (DET && location.hash === '#' + DET.id) DET.open = true;   // viene de «Agregar a mi cotización» en la bolsa
 
   // fecha mínima: mañana, en hora de Ciudad de México
   const hoy = new Intl.DateTimeFormat('en-CA', { timeZone: AG.zona || 'America/Mexico_City' }).format(new Date());
@@ -64,8 +68,8 @@
     $('#equipo-cotizacion').innerHTML = eq.piezas
       ? `<ul>${eq.lineas.map(l => `<li><span>${esc(l.nombre)} × ${l.cantidad}</span><small>${eq.dias} d · ${mxn(l.importe)}</small></li>`).join('')}
          ${eq.operador ? `<li class="op"><span>${esc(eq.operador.nombre)} × ${eq.operador.cantidad} <em>${t('obligatorio con cámara, se cotiza aparte', 'required with a camera, quoted separately')}</em></span><small>${eq.dias} d · ${mxn(eq.operador.importe)}</small></li>` : ''}</ul>
-         <div class="acciones-equipo"><button type="button" class="enlace mono" data-abrir-bolsa>${t('Editar bolsa', 'Edit bag')}</button><a class="enlace mono" href="../renta/">${t('Ver más equipo', 'See more gear')} →</a></div>`
-      : `<p>${t('Sin equipo rentado.', 'No rented gear.')} <a href="../renta/">${t('Agrega tripiés, luz, audio o cámaras con operador', 'Add tripods, lights, audio or cameras with an operator')} →</a></p>`;
+         <div class="acciones-equipo"><button type="button" class="enlace mono" data-abrir-bolsa>${t('Editar bolsa', 'Edit bag')}</button><a class="enlace mono" href="${RENTA}">${t('Ver más equipo', 'See more gear')} →</a></div>`
+      : `<p>${t('Sin equipo rentado.', 'No rented gear.')} <a href="${RENTA}">${t('Agrega tripiés, luz, audio o cámaras con operador', 'Add tripods, lights, audio or cameras with an operator')} →</a></p>`;
   }
   $('#equipo-cotizacion').addEventListener('click', e => { if (e.target.closest('[data-abrir-bolsa]') && B) B.abrir(); });
 
@@ -121,6 +125,6 @@
       t('Viáticos (aparte, no incluidos en el total):', 'Travel expenses (separate, not included in the total):'), ...(c.via.lineas.length ? c.via.lineas.map(l => `  ${l.nombre}: ${l.importe ? mxn(l.importe) : t('sin costo', 'no cost')}`) : [`  ${c.via.zona.nombre}`]), '',
       `${t('Nombre', 'Name')}: ${d.nombre}`, `${t('Empresa', 'Company')}: ${d.empresa || '—'}`, `${t('Correo', 'Email')}: ${d.correo}`, '', d.notas || ''].join('\n');
     location.href = `mailto:${CAT.correo}?subject=${encodeURIComponent(t('Cotización Toriku · ', 'Toriku quote · ') + disc.nombre + ' · ' + d.fecha)}&body=${encodeURIComponent(cuerpo)}`;
-    setTimeout(() => { location.href = '../gracias/?solicitud=1'; }, 800);
+    setTimeout(() => { location.href = GRACIAS + '?solicitud=1'; }, 800);
   });
 })();

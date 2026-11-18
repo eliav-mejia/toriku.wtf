@@ -19,19 +19,19 @@
   </url>
   <url>
     <loc>https://toriku.wtf/renta/</loc><lastmod>2026-11-16</lastmod><changefreq>monthly</changefreq><priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="es-MX" href="https://toriku.wtf/renta/"/><xhtml:link rel="alternate" hreflang="en-US" href="https://toriku.wtf/en/renta/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://toriku.wtf/en/renta/"/>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://toriku.wtf/renta/"/><xhtml:link rel="alternate" hreflang="en-US" href="https://toriku.wtf/en/rent/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://toriku.wtf/en/rent/"/>
   </url>
   <url>
-    <loc>https://toriku.wtf/en/renta/</loc><lastmod>2026-11-16</lastmod><changefreq>monthly</changefreq><priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="es-MX" href="https://toriku.wtf/renta/"/><xhtml:link rel="alternate" hreflang="en-US" href="https://toriku.wtf/en/renta/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://toriku.wtf/en/renta/"/>
+    <loc>https://toriku.wtf/en/rent/</loc><lastmod>2026-11-16</lastmod><changefreq>monthly</changefreq><priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://toriku.wtf/renta/"/><xhtml:link rel="alternate" hreflang="en-US" href="https://toriku.wtf/en/rent/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://toriku.wtf/en/rent/"/>
   </url>
   <url>
     <loc>https://toriku.wtf/cotizar/</loc><lastmod>2026-11-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="es-MX" href="https://toriku.wtf/cotizar/"/><xhtml:link rel="alternate" hreflang="en-US" href="https://toriku.wtf/en/cotizar/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://toriku.wtf/en/cotizar/"/>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://toriku.wtf/cotizar/"/><xhtml:link rel="alternate" hreflang="en-US" href="https://toriku.wtf/en/quote/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://toriku.wtf/en/quote/"/>
   </url>
   <url>
-    <loc>https://toriku.wtf/en/cotizar/</loc><lastmod>2026-11-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="es-MX" href="https://toriku.wtf/cotizar/"/><xhtml:link rel="alternate" hreflang="en-US" href="https://toriku.wtf/en/cotizar/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://toriku.wtf/en/cotizar/"/>
+    <loc>https://toriku.wtf/en/quote/</loc><lastmod>2026-11-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es-MX" href="https://toriku.wtf/cotizar/"/><xhtml:link rel="alternate" hreflang="en-US" href="https://toriku.wtf/en/quote/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://toriku.wtf/en/quote/"/>
   </url>
   <url>
     <loc>https://toriku.wtf/legal/aviso-de-privacidad.html</loc><lastmod>2026-11-16</lastmod><changefreq>yearly</changefreq><priority>0.2</priority>

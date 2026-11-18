@@ -316,7 +316,7 @@ body.cajon-abierto { overflow: hidden; }
 .equipo-humano small { display: block; color: var(--gris); font: 500 11.5px var(--mono); }
 .campo .equipo-humano input { width: 64px; padding: 8px; text-align: center; font-family: var(--mono); }
 .equipo-cotizacion { border: 1px dashed var(--linea-2); padding: 14px; font-size: 14px; scroll-margin-top: 90px; }
-#equipo { scroll-margin-top: 90px; }
+#equipo, #gear { scroll-margin-top: 90px; }
 .equipo-cotizacion p { margin: 0; color: var(--papel-2); }
 .equipo-cotizacion ul { list-style: none; margin: 0 0 8px; padding: 0; }
 .equipo-cotizacion li { display: flex; justify-content: space-between; gap: 12px; padding: 6px 0; border-bottom: 1px solid var(--linea); }

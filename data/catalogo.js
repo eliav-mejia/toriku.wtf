@@ -124,6 +124,10 @@ window.TORIKU_CATALOGO = (() => {
     : { pre: 'Preproducción', jorn: 'jorn.', dia: 'día', dias: 'días', pers: 'pers.', precioPer: 'por persona' };
   C.en = EN;
 
+  // Slugs en inglés para enlaces /en/quote/?type=… (2026-11-17)
+  const SLUG_EN = { cortometraje: 'short-film', videoclip: 'music-video', publicidad: 'ads', producto: 'product', moda: 'fashion', retrato: 'portrait' };
+  C.disciplinas.forEach(d => { d.slugEn = SLUG_EN[d.id]; });
+
   const rol = id => C.roles.find(r => r.id === id);
 
   // Servicio: { disciplina, modalidad: 'sitio'|'distancia', jornadas, edicion, equipo: {rol: n}, foro: bool, extras: [sku] }
